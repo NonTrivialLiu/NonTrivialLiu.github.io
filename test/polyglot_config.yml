@@ -1,0 +1,2 @@
+# Keep the integration build deterministic and independent of external feeds.
+external_sources: []
