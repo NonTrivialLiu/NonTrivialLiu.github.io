@@ -30,6 +30,21 @@ module PolyglotCompat
   end
 end
 
+# Polyglot 1.14 restores these fields only after a successful localized pass.
+# Keep the Site reusable when a generator raises midway through that pass.
+module PolyglotStateGuard
+  def process_active_language
+    previous_dest = @dest
+    previous_exclude = @exclude.dup
+    super
+  ensure
+    @dest = previous_dest
+    @exclude = previous_exclude
+  end
+end
+
+Jekyll::Site.prepend(PolyglotStateGuard) unless Jekyll::Site.ancestors.include?(PolyglotStateGuard)
+
 # jekyll-imagemagick writes directly to site.dest, bypassing Polyglot's static
 # file exclusions. Run it only for the default-language build so every locale
 # shares the responsive images emitted at the site root.

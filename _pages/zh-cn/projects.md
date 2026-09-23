@@ -1,10 +1,10 @@
 ---
 layout: page
-title: projects
+title: 项目
 permalink: /projects/
-lang: en
+lang: zh-cn
 page_id: projects
-description: A growing collection of your cool projects.
+description: 持续积累的科研与工程项目合集。
 nav: true
 nav_order: 3
 display_categories: [work, fun]

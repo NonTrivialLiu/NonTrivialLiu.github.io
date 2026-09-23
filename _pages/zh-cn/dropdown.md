@@ -1,16 +1,16 @@
 ---
 layout: page
-title: submenus
+title: 更多
 permalink: /dropdown/
-lang: en
+lang: zh-cn
 page_id: submenus
 nav: true
 nav_order: 8
 dropdown: true
 children:
-  - title: bookshelf
+  - title: 书架
     permalink: /books/
   - title: divider
-  - title: blog
+  - title: 文章
     permalink: /blog/
 ---

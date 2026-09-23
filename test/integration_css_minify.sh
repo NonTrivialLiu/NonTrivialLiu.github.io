@@ -32,7 +32,7 @@ imagemagick:
 YAML
 
 JEKYLL_ENV=production bundle exec jekyll build \
-  --config "_config.yml,${override_file}" -d "${site}" >/dev/null
+  --config "_config.yml,test/polyglot_config.yml,${override_file}" -d "${site}" >/dev/null
 
 tailwind_css="${site}/assets/css/tailwind.css"
 main_css="${site}/assets/css/main.css"

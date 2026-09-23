@@ -15,9 +15,13 @@ trap cleanup EXIT
 
 build() {
   local name="$1"
-  shift
+  local override="${2:-}"
   local out="${tmp_dir}/site-${name}"
-  bundle exec jekyll build "$@" -d "${out}" >/dev/null
+  local config="_config.yml,test/polyglot_config.yml"
+  if [ -n "${override}" ]; then
+    config="${config},${override}"
+  fi
+  bundle exec jekyll build --config "${config}" -d "${out}" >/dev/null
   echo "${out}"
 }
 
@@ -74,7 +78,7 @@ grep -q 'al_marimo' "${default_site}/index.html" && fail "home page wrongly load
 # everyone who copies this template.
 override="${tmp_dir}/protect-email.yml"
 printf 'protect_email: true\n' >"${override}"
-protected_site="$(build protected --config "_config.yml,${override}")"
+protected_site="$(build protected "${override}")"
 
 # Scope note: this asserts the gating and the runtime, NOT that site-wide
 # addresses are obfuscated. `al_folio_core`'s metadata.liquid renders social

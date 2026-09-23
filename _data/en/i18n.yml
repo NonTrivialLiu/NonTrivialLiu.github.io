@@ -1,3 +1,149 @@
-# Add shared English interface strings here as the site is customized.
-nav: {}
-home: {}
+# English interface strings.
+#
+# Every key here must also exist in `_data/zh-cn/i18n.yml`; builds report (and
+# with AL_FOLIO_I18N_STRICT=1 fail on) keys that drift apart. Templates read
+# these through the `t` filter, for example `{{ "home.news" | t }}`.
+#
+# Site-level prose stays in `_config.yml`; a language dictionary may override it
+# through its own `config:` section.
+
+nav:
+  toggle: Toggle navigation
+  search: Search
+  open_search: Open search
+  change_theme: Change theme
+  change_theme_label: Change color theme
+  current: (current)
+  table_of_contents: Table of contents
+
+home:
+  news: news
+  latest_posts: latest posts
+  selected_publications: selected publications
+  no_news: No news so far...
+  no_posts: No posts so far...
+
+blog:
+  min_read: min read
+
+distill:
+  contents: Contents
+
+# Shared strftime formats, so localized pages print localized dates.
+date:
+  short: "%b %d, %Y"
+  long: "%B %d, %Y"
+  day_month_year: "%-d %B %Y"
+
+references:
+  heading: References
+
+post:
+  created_on: "Created on "
+  by: " by "
+  last_updated_on: ", last updated on "
+
+archive:
+  posts:
+    categories: an archive of posts in this category
+    year: an archive of posts from this year
+    tags: an archive of posts with this tag
+  books:
+    categories: an archive of books in this category
+    year: an archive of books from this year
+    tags: an archive of books with this tag
+
+citation:
+  intro: "If you found this useful, please cite this as:"
+  bibtex: "or as a BibTeX entry:"
+
+book_review:
+  cover: "Cover of "
+  cover_alt: " cover"
+  cover_source: " on the "
+  start_date: "Start Date: "
+  end_date: "End Date: "
+
+punctuation:
+  period: "."
+
+code:
+  copy_aria: Copy code to clipboard
+
+search:
+  bibliography_placeholder: Type to filter
+
+pagination:
+  label: Blog page navigation
+
+calendar:
+  upcoming_events: Upcoming Events
+  show_calendar: Show Calendar
+
+course:
+  instructor: "Instructor:"
+  term: "Term:"
+  location: "Location:"
+  time: "Time:"
+  schedule: Schedule
+  week: Week
+  date: Date
+  topic: Topic
+  materials: Materials
+  no_courses: No courses available yet.
+  no_schedule: No schedule available for this course.
+
+footer:
+  copyright: "&copy; Copyright"
+  last_updated: "Last updated:"
+
+related_posts:
+  heading: Enjoy Reading This Article?
+  intro: "Here are some more articles you might like to read next:"
+
+newsletter:
+  subscribe_prompt: "Subscribe to be notified of future articles:"
+
+# Project categories are filter keys in front matter; only their display name
+# is translated, through `{{ 'categories.work' | t: 'work' }}`.
+categories:
+  work: work
+  fun: fun
+
+cv:
+  contact_information: Contact Information
+  name: Name
+  professional_title: Professional Title
+  email: Email
+  phone: Phone
+  location: Location
+  website: Website
+  professional_summary: Professional Summary
+  experience: Experience
+  no_data: No CV data found. Please configure either RenderCV (cv.yml) or JSONResume (resume.json) data.
+  present: Present
+  # Section keys stay as written in `cv.yml`; the label is looked up by a
+  # slugified key so a translated heading cannot change which template runs.
+  section:
+    education: Education
+    awards: Awards
+    honors-and-awards: Honors and Awards
+    publications: Publications
+    skills: Skills
+    languages: Languages
+    interests: Interests
+    academic-interests: Academic Interests
+    certificates: Certificates
+    projects: Projects
+    open-source-projects: Open Source Projects
+    references: References
+
+book_status:
+  abandoned: ABANDONED
+  finished: FINISHED
+  interested: INTERESTED
+  paused: PAUSED
+  queued: QUEUED
+  reading: READING
+  reread: REREAD
+  uncategorized: UNCATEGORIZED

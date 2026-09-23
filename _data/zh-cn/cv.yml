@@ -1,0 +1,194 @@
+# 简体中文 CV 数据（RenderCV 格式）。
+#
+# 小节名（Education、Experience、Awards 等）是模板用来决定渲染方式的稳定标识，
+# 保持英文；页面上的小节标题由 `_data/zh-cn/i18n.yml` 里的 `cv.section.*` 词条翻译。
+# 人名、机构名、期刊名与论文题名保留原文。
+cv:
+  name: Albert Einstein
+  label: 物理学家
+  email: einstein@example.com
+  location: 新泽西州普林斯顿
+  image: ""
+  summary: 出生于德国的理论物理学家，被普遍视为历史上最伟大、最具影响力的科学家之一。
+
+  social_networks:
+    - network: X
+      username: AlbertEinstein
+    - network: GitHub
+      username: example
+    - network: LinkedIn
+      username: example
+
+  address:
+    street: 2712 Broadway St
+    city: San Francisco
+    region: California
+    postalCode: CA 94115
+    countryCode: US
+
+  sections:
+    Education:
+      - institution: University of Zurich
+        location: Zurich, Switzerland
+        url: https://www.uzh.ch/
+        area: 物理学
+        studyType: 博士
+        start_date: 1900
+        end_date: 1905
+        score: ""
+        courses: "相对论"
+        highlights:
+          - 说明 1。
+          - 说明 2。
+
+      - institution: Eidgenössische Technische Hochschule
+        location: Zurich, Switzerland
+        area: 物理学
+        studyType: 联邦教师资格文凭
+        start_date: 1896
+        end_date: 1900
+        highlights:
+          - 说明 1。
+          - 说明 2。
+
+    Experience:
+      - company: Institute for Advanced Study, Princeton University
+        position: 理论物理学教授
+        location: Princeton University, NJ
+        start_date: 1933
+        end_date: 1955
+        summary: 在帕尔默物理实验室（今 302 Frist Campus Center）授课。虽未在普林斯顿担任教授，仍与物理系教授保持往来，并继续在校内讲学。
+        highlights:
+          - 相对论
+          - 说明 2。
+
+      - company: California Institute of Technology
+        position: 访问教授
+        location: Pasadena, California, US
+        start_date: 1933
+        end_date: 1933
+        highlights:
+          - 说明 1。
+          - 说明 2。
+
+      - company: Kaiser Wilhelm Institute for Physics
+        position: 所长
+        location: Berlin, Germany
+        start_date: 1917
+        end_date: 1933
+
+      - company: Karl-Ferdinand University
+        position: 理论物理学教授
+        location: Prague, Czechoslovakia
+        start_date: 1911
+        end_date: 1917
+
+      - company: University of Zurich
+        position: 理论物理学副教授
+        location: Zurich, Switzerland
+        start_date: 1909
+        end_date: 1911
+
+    Volunteer:
+      - company: People's Climate March
+        position: 首席组织者
+        location: Zurich, Switzerland
+        start_date: 2014-04-01
+        end_date: 2015-07-01
+        summary: 担任人民气候大游行纽约市分部的首席组织者，这是史上规模最大的气候游行。
+        highlights:
+          - 因组织游行的努力获绿色和平颁发的“气候英雄”奖。
+          - 入选《时代》周刊 2014 年度人物。
+
+    Awards:
+      - title: 诺贝尔物理学奖
+        authors:
+          - "Royal Swedish Academy of Sciences"
+        date: 1921-11-01
+        awarder: Royal Swedish Academy of Sciences
+        url: https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/
+        summary: 诺贝尔奖依阿尔弗雷德·诺贝尔 1895 年的遗嘱设立，分为五个奖项，授予“在前一年为人类作出最大贡献的人”。
+
+      - title: 马克斯·普朗克奖章
+        authors:
+          - "German Physical Society"
+        date: 2029
+        awarder: German Physical Society
+        summary: 授予杰出科学成就
+
+    Publications:
+      - title: Zur Elektrodynamik bewegter Körper
+        authors:
+          - Albert Einstein
+        publisher: Annalen der Physik
+        releaseDate: 1905-06-30
+        url: https://en.wikisource.org/wiki/Translation:On_the_Electrodynamics_of_Moving_Bodies
+        summary: 论文讨论迈克耳孙—莫雷实验以及光与时间的性质。狭义相对论包含这样一条原理：无论光源如何运动，光速对所有惯性参考系中的观察者都相同。
+
+      - title: Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt
+        authors:
+          - Albert Einstein
+        publisher: Annalen der Physik
+        releaseDate: 1905-03-18
+        url: https://de.wikisource.org/wiki/Über_einen_die_Erzeugung_und_Verwandlung_des_Lichtes_betreffenden_heuristischen_Gesichtspunkt
+        summary: 在这篇论文中，他把量子理论用于光，解释光电效应。他特别用光量子（光子）的概念解释实验结果，同时强调实验结果本身的重要性。这项工作让他于 1921 年获得诺贝尔物理学奖。
+
+      - title: Die Grundlage der allgemeinen Relativitätstheorie
+        authors:
+          - Albert Einstein
+        publisher: Annalen der Physik
+        releaseDate: 1916-03-20
+        url: https://de.wikisource.org/wiki/Die_Grundlage_der_allgemeinen_Relativitätstheorie
+        summary: 广义相对论的发表使他享誉国际。他曾任苏黎世大学（1909—1911）与布拉格大学（1911—1912）物理学教授，之后回到苏黎世联邦理工学院（1912—1914）。
+
+    Skills:
+      - name: 物理学
+        level: 精通
+        icon: fa-solid fa-hashtag
+        keywords: "量子力学、量子计算、量子信息、量子密码学、量子通信、量子隐形传态"
+
+    Languages:
+      - name: 德语
+        summary: "母语"
+
+      - name: 英语
+        summary: "流利"
+
+    Interests:
+      - name: 物理学
+        icon: fa-solid fa-tag
+        keywords: "量子力学、量子计算、量子信息、量子密码学、量子通信、量子隐形传态"
+
+    Certificates:
+      - name: 机器学习
+        date: 2018-01-01
+        issuer: Stanford University
+        icon: fa-solid fa-location-dot
+
+      - name: 量子计算
+        date: 2018-01-01
+        issuer: Stanford University
+        icon: fa-solid fa-tag
+
+      - name: 量子信息
+        date: 2018-01-01
+        issuer: Stanford University
+        icon: fa-solid fa-envelope
+
+    Projects:
+      - name: 量子计算
+        summary: 量子计算利用叠加与纠缠等量子力学现象完成运算，执行量子计算的机器称为量子计算机。
+        highlights:
+          - 量子隐形传态
+          - 量子密码学
+        start_date: 2018-01-01
+        end_date: 2018-01-01
+
+    References:
+      - name: Professor John Doe
+        icon: fa-solid fa-laptop
+        reference: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit.
+
+      - name: Professor Jane Smith
+        icon: fa-solid fa-thumbtack
+        reference: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit.

@@ -1,3 +1,156 @@
-# Add Simplified Chinese interface strings here when translation begins.
-nav: {}
-home: {}
+# 简体中文界面词条。
+#
+# 键名与 `_data/en/i18n.yml` 一一对应；构建时会比对两侧键集合，缺失、多余或
+# 取值为空都会写进构建日志，设 AL_FOLIO_I18N_STRICT=1 时直接让构建失败。
+#
+# `config:` 一节用于覆盖 `_config.yml` 中的站点级文案，仅对简体中文生效。
+
+config:
+  description: >
+    面向学术研究的极简留白站点主题，基于
+    [*folio*](https://github.com/bogoli/-folio) 设计。
+  contact_note: 你还可以在此注明哪一种联系方式最容易找到你。
+  footer_text: >
+    由 <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> 与
+    <a href="https://github.com/alshedivat/al-folio">al-folio</a> 主题驱动。
+    由 <a href="https://pages.github.com/" target="_blank">GitHub Pages</a> 托管。
+    图片来自 <a href="https://unsplash.com" target="_blank">Unsplash</a>。
+  blog_name: 文章
+  blog_description: 面向学术研究的写作与笔记
+
+nav:
+  toggle: 切换导航
+  search: 搜索
+  open_search: 打开搜索
+  change_theme: 切换主题
+  change_theme_label: 切换配色主题
+  current: （当前）
+  table_of_contents: 目录
+
+home:
+  news: 动态
+  latest_posts: 最新文章
+  selected_publications: 代表论文
+  no_news: 暂无动态
+  no_posts: 暂无文章
+
+blog:
+  min_read: 分钟阅读
+
+distill:
+  contents: 目录
+
+# 共用日期格式：中文页面按“年 月 日”排版。
+date:
+  short: "%Y 年 %-m 月 %-d 日"
+  long: "%Y 年 %-m 月 %-d 日"
+  day_month_year: "%Y 年 %-m 月 %-d 日"
+
+references:
+  heading: 参考文献
+
+post:
+  created_on: "创建于 "
+  by: "，作者："
+  last_updated_on: "，最后更新于 "
+
+archive:
+  posts:
+    categories: 该分类下的文章归档
+    year: 本年度的文章归档
+    tags: 该标签下的文章归档
+  books:
+    categories: 该分类下的书评归档
+    year: 本年度的书评归档
+    tags: 该标签下的书评归档
+
+citation:
+  intro: "如果本文对你有帮助，可以这样引用："
+  bibtex: "或使用以下 BibTeX 条目："
+
+book_review:
+  cover: "封面："
+  cover_alt: " 封面"
+  cover_source: "，图片来自 "
+  start_date: "开始阅读："
+  end_date: "读完时间："
+
+punctuation:
+  period: "。"
+
+code:
+  copy_aria: 复制代码到剪贴板
+
+search:
+  bibliography_placeholder: 输入关键词筛选
+
+pagination:
+  label: 文章列表分页导航
+
+calendar:
+  upcoming_events: 近期日程
+  show_calendar: 显示日历
+
+course:
+  instructor: "教师："
+  term: "学期："
+  location: "地点："
+  time: "时间："
+  schedule: 课程安排
+  week: 周次
+  date: 日期
+  topic: 主题
+  materials: 资料
+  no_courses: 暂无课程
+  no_schedule: 本课程暂无安排
+
+footer:
+  copyright: "&copy; 版权所有"
+  last_updated: "最后更新："
+
+related_posts:
+  heading: 继续阅读
+  intro: "以下几篇文章或许也值得一读："
+
+newsletter:
+  subscribe_prompt: "订阅后可在新文章发布时收到通知："
+
+categories:
+  work: 工作
+  fun: 业余
+
+cv:
+  contact_information: 联系方式
+  name: 姓名
+  professional_title: 职称
+  email: 邮箱
+  phone: 电话
+  location: 所在地
+  website: 个人主页
+  professional_summary: 个人简介
+  experience: 工作经历
+  no_data: 未找到 CV 数据。请配置 RenderCV（cv.yml）或 JSONResume（resume.json）。
+  present: 至今
+  section:
+    education: 教育经历
+    awards: 获奖情况
+    honors-and-awards: 荣誉与奖项
+    publications: 论文
+    skills: 技能
+    languages: 语言
+    interests: 研究兴趣
+    academic-interests: 学术兴趣
+    certificates: 证书
+    projects: 项目
+    open-source-projects: 开源项目
+    references: 推荐人
+
+book_status:
+  abandoned: 已放弃
+  finished: 已读完
+  interested: 想读
+  paused: 已暂停
+  queued: 待读
+  reading: 在读
+  reread: 重读
+  uncategorized: 未分类

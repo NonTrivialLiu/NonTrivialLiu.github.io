@@ -95,5 +95,8 @@ jobs:
       - name: Run new plugin integration checks 🧩
         run: bash test/integration_new_plugins.sh
 
+      - name: Run translation integration checks 🈯
+        run: bash test/integration_i18n.sh
+
       - name: Run multilingual integration checks 🌐
         run: bash test/integration_polyglot.sh

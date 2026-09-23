@@ -1,8 +1,8 @@
 ---
 layout: default
 permalink: /blog/
-title: blog
-lang: en
+title: 文章
+lang: zh-cn
 nav: true
 nav_order: 1
 pagination:

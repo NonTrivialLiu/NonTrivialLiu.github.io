@@ -20,12 +20,15 @@
     lang="{{ site.lang }}"
   {%- endif -%}
 {%- endcapture -%}
-<html {{ html_attributes }}>
+<html {{ html_attributes }} data-copy-code-aria="{{ 'code.copy_aria' | t | escape }}">
   <!-- Head -->
   <head>
     {% if page.redirect %}
       {% if page.redirect == true %}
         {% assign redirect = site.baseurl | append: '/' %}
+        {% if site.active_lang and site.active_lang != site.default_lang %}
+          {% assign redirect = redirect | append: site.active_lang | append: '/' %}
+        {% endif %}
       {% elsif page.redirect contains '://' %}
         {% assign redirect = page.redirect %}
       {% else %}
@@ -55,7 +58,7 @@
               <nav
                 id="toc-sidebar"
                 class="sticky-top toc toc-sidebar"
-                aria-label="Table of contents"
+                aria-label="{{ 'nav.table_of_contents' | t | escape }}"
                 data-toc-collapse="{{ toc_collapse }}"
                 data-toc-collapse-depth="{{ toc_collapse_depth }}"
               ></nav>
@@ -68,7 +71,7 @@
               <nav
                 id="toc-sidebar"
                 class="sticky-top toc toc-sidebar"
-                aria-label="Table of contents"
+                aria-label="{{ 'nav.table_of_contents' | t | escape }}"
                 data-toc-collapse="{{ toc_collapse }}"
                 data-toc-collapse-depth="{{ toc_collapse_depth }}"
               ></nav>
