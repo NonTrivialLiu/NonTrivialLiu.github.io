@@ -1,8 +1,8 @@
 ---
 layout: page
-title: news
+title: 动态
 permalink: /news/
-lang: en
+lang: zh-cn
 page_id: news
 ---
 

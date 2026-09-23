@@ -8,6 +8,8 @@ term: Fall
 location: Main Campus, Room 301
 time: Tuesdays and Thursdays, 10:00-11:30 AM
 course_id: intro-machine-learning
+lang: en
+page_id: course-introduction-to-machine-learning
 schedule:
   - week: 1
     date: Sept 5

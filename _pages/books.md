@@ -2,6 +2,8 @@
 layout: book-shelf
 title: bookshelf
 permalink: /books/
+lang: en
+page_id: bookshelf
 nav: false
 collection: books
 ---
