@@ -40,11 +40,7 @@ Use this table before opening or reviewing a PR:
 | Email obfuscation and click-to-copy addresses                                                                         | `al-org-dev/al-email-protect` / `al_email_protect`                   |
 | marimo notebook embeds and runnable Python snippets                                                                   | `al-org-dev/al-marimo` / `al_marimo`                                 |
 
-Local site overrides are still valid **in your own site**. A site created from this template may define `_layouts/<name>.liquid`, `_includes/<path>.liquid`, `_sass/*.scss`, or site-specific plugins when the customization is only for that site. Shared runtime fixes should be ported to the owning plugin instead.
-
-When a site keeps local overrides of plugin-owned files, run `bundle exec al-folio upgrade overrides audit`. Commit `.al-folio-overrides.yml` after review so future plugin gem updates can flag upstream changes to shadowed files.
-
-This does **not** apply to the `alshedivat/al-folio` starter repo itself, which must not contain those directories — `npm run lint:style-contract` enforces that boundary. See [local overrides: your site vs. this repo](ARCHITECTURE.md#local-overrides-your-site-vs-this-repo) for the distinction and its current caveat.
+Site-specific adaptations follow the [Local overrides](ARCHITECTURE.md#local-overrides) procedure.
 
 Plugin releases are versioned and published independently on RubyGems. A plugin patch release does not require a new starter release unless the starter wiring, dependency pins, lockfile/image metadata, docs, or test fixtures need to change.
 

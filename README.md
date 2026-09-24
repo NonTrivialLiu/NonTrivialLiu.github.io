@@ -1,4 +1,10 @@
-# al-folio
+# 刘非凡的个人博客
+
+[访问博客](https://nontrivialliu.github.io/) · [简体中文](https://nontrivialliu.github.io/zh-cn/)
+
+本站基于 [al-folio](https://github.com/alshedivat/al-folio) 构建。以下保留上游模板的技术与功能资料，个人内容以博客页面为准。
+
+## al-folio 技术参考
 
 <div align="center">
 
@@ -51,7 +57,7 @@ Want to learn more about Jekyll? Check out [this tutorial](https://www.taniarasc
 
 <!--ts-->
 
-- [al-folio](#al-folio)
+- [al-folio 技术参考](#al-folio-技术参考)
   - [Getting started](#getting-started)
   - [Table Of Contents](#table-of-contents)
   - [Installing and Deploying](#installing-and-deploying)
@@ -142,7 +148,7 @@ Useful first prompts:
 
 ### Claude
 
-Claude should start from [CLAUDE.md](CLAUDE.md), which imports [AGENTS.md](AGENTS.md). For setup or migration tasks, use the matching skill from `.claude/skills/`, which points to the canonical `.agents/skills/` directory.
+Claude Code can read the repository's [AGENTS.md](AGENTS.md) directly in supported environments. For setup or migration tasks, use the matching skill from `.claude/skills/`, which points to the canonical `.agents/skills/` directory. See the [Claude Code project instructions](https://code.claude.com/docs/en/memory#agents-md) for loading conditions.
 
 ### Copilot And Other Agents
 

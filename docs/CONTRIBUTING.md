@@ -22,7 +22,7 @@ Note that since [#2048](https://github.com/alshedivat/al-folio/pull/2048) al-fol
 - `al-folio-core` and other `al-*` gem repos: component runtime behavior, layouts/includes/style primitives, feature logic, unit/component tests.
 - If a feature does not fit an existing plugin, propose a new standalone plugin first, then implement there.
 
-For the change-type routing table, see [`AGENTS.md`](../AGENTS.md#route-your-change). For the authoritative area-to-gem mapping, see [`BOUNDARIES.md`](BOUNDARIES.md). For how the starter and gems connect at runtime — including the failure modes that produce no error message — see [`ARCHITECTURE.md`](ARCHITECTURE.md).
+For the change-type routing table, see [`AGENTS.md`](../AGENTS.md#内容与代码归属). For the authoritative area-to-gem mapping, see [`BOUNDARIES.md`](BOUNDARIES.md). For how the starter and gems connect at runtime — including the failure modes that produce no error message — see [`ARCHITECTURE.md`](ARCHITECTURE.md).
 
 ## Plugin Naming Convention (v1.x)
 
@@ -70,12 +70,12 @@ bundle install
 npm ci
 npm run lint:prettier
 npm run lint:style-contract
-bundle exec jekyll build --baseurl /al-folio
+bundle exec jekyll build
 ```
 
-The `--baseurl /al-folio` flag matters: the demo site is published as a project page, and building without it produces an unstyled site with broken links.
+`_config.yml` sets an empty `baseurl` for the personal GitHub Pages domain.
 
-If your change touches plugin wiring or feature behavior, run the integration tests it affects. All seven are gated by `unit-tests.yml`:
+If your change touches plugin wiring, bilingual content, or feature behavior, run the integration tests it affects. `unit-tests.yml` gates these scripts:
 
 ```bash
 bash test/integration_comments.sh
@@ -85,6 +85,8 @@ bash test/integration_bootstrap_compat.sh
 bash test/integration_upgrade_cli.sh
 bash test/integration_css_minify.sh
 bash test/integration_new_plugins.sh
+bash test/integration_i18n.sh
+bash test/integration_polyglot.sh
 ```
 
 If your change touches visual tests, install Playwright browsers once and run:
@@ -94,21 +96,15 @@ npx playwright install chromium webkit
 npm run test:visual
 ```
 
-The full validated command set lives in [`AGENTS.md`](../AGENTS.md#validated-local-command-set).
+The task-based verification entry point lives in [`AGENTS.md`](../AGENTS.md#验证与交付).
 
 ## AI Agent Guidance
 
 This repository includes agent entrypoints and skills for Codex, Claude, Copilot, and similar coding agents.
 
-### CLAUDE.md
+### AGENTS.md
 
-The `CLAUDE.md` file serves as an entry point for Claude (Anthropic's AI assistant) when working with this repository. It opens with Claude's `@path/to/import` syntax (as described in [Claude's best practices](https://code.claude.com/docs/en/best-practices#write-an-effective-claude-md)) to pull in `AGENTS.md`, so the ecosystem-neutral rules stay in one place:
-
-```
-@AGENTS.md
-```
-
-Beyond that import, `CLAUDE.md` carries Claude-specific and longer-form guidance that does not belong in the short entry point — the daily dev loop, the Docker serving model, and the CI/style-contract details. Ecosystem-neutral rules that every agent needs belong in `AGENTS.md` or [`ARCHITECTURE.md`](ARCHITECTURE.md); keep `CLAUDE.md` for the rest.
+[`AGENTS.md`](../AGENTS.md) is the shared project-instruction entry point. Claude Code reads it directly in supported environments when the project uses `AGENTS.md` as its instruction file. Topic-specific operating details live in the linked documentation. See [Claude Code project instructions](https://code.claude.com/docs/en/memory#agents-md) for loading conditions.
 
 ### Agent Skills
 
