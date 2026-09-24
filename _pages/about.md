@@ -1,36 +1,44 @@
 ---
 layout: about
 title: about
+display_name: Feifan Liu
 permalink: /
 lang: en
 page_id: about
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: Researcher & Engineer. Focused on <span class="homepage-accent">AI Agents</span>, Power Systems, and Hardware-Software Co-design.
 
 profile:
   align: right
   image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
+  image_circular: false
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>ZJU-UIUC Institute, Zhejiang University</p>
+    <p>Electronic Information</p>
+    <p>liu.feifan.ai@outlook.com</p>
 
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+selected_papers: true
+social: true
 
 announcements:
-  enabled: true # includes a list of news items
-  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 5 # leave blank to include all the news in the `_news` folder
+  enabled: true
+  scrollable: true
+  limit: 5
 
 latest_posts:
   enabled: true
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 3 # leave blank to include all the blog posts
+  scrollable: true
+  limit: 3
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](https://www.reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+Hi, I'm Feifan Liu. I am currently a Master's student in Electronic Information at the ZJU-UIUC Institute (ZJUI), Zhejiang University.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+I approach problems with the dual mindset of a researcher and an engineer. Beyond theoretical soundness, I care about what happens when an algorithm is flashed onto a chip or integrated into a real-world system—whether it can withstand physical constraints and actual operating conditions.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+**From Edge Hardware to Complex Systems**
+My early technical background is rooted in low-level hardware. I have designed `PCBs`, written control algorithms, and deployed lightweight `Transformer` models on edge devices. These experiences gave me an intuitive grasp of compute limits, hardware-software co-design, and overall system architecture.
+
+**Present and Future: <span class="homepage-accent">Grid + LLM</span> & Intelligent Decision-Making**
+Currently, my research focuses on the **<span class="homepage-accent">intersection of power systems and artificial intelligence</span>**, with a long-term commitment to Grid + LLM and AI Agents. My recent work revolves around `GNN`-based grid topology control (e.g., busbar splitting and merging). Previously, I built an autonomous AI agent workflow for compiler optimization and developed fine-tuning and `RAG` architectures for domain-specific LLMs. I am now working on bringing the complex reasoning and scheduling capabilities of large language models into the power grid—a sector with high technical barriers and immense real-world value.
+
+**About This Space**
+This is my personal [blog]({{ '/blog/' | relative_url }}), where I document my learning and thoughts. If you have specific engineering problems or research ideas, feel free to reach out and connect.

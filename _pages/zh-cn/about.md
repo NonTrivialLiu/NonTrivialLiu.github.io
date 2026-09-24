@@ -1,36 +1,44 @@
 ---
 layout: about
 title: 关于
+display_name: 刘非凡
 permalink: /
 lang: zh-cn
 page_id: about
-subtitle: <a href='#'>所在单位</a>。地址。联系方式。座右铭，等等。
+subtitle: Researcher & Engineer. 关注 <span class="homepage-accent">AI Agent</span>、电力系统与软硬件协同.
 
 profile:
   align: right
   image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
+  image_circular: false
   more_info: >
-    <p>办公室 555 号</p>
-    <p>某某路 123 号</p>
-    <p>某某市，某省 12345</p>
+    <p>浙江大学 ZJU-UIUC 联合学院</p>
+    <p>电子信息专业</p>
+    <p>liu.feifan.ai@outlook.com</p>
 
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+selected_papers: true
+social: true
 
 announcements:
-  enabled: true # includes a list of news items
-  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 5 # leave blank to include all the news in the `_news` folder
+  enabled: true
+  scrollable: true
+  limit: 5
 
 latest_posts:
   enabled: true
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 3 # leave blank to include all the blog posts
+  scrollable: true
+  limit: 3
 ---
 
-在这里写下你的个人简介，向读者介绍你自己。也可以链接到你常去的社区，例如 [subreddit](https://www.reddit.com)。照片同样可以放进来：代码已经写好，只要把图片命名为 `prof_pic.jpg` 放进 `img/` 目录即可。
+你好，我是刘非凡。目前在浙江大学 ZJU-UIUC 联合学院（ZJUI）攻读电子信息硕士。
 
-地址、通讯地址或其他信息放在照片正下方。如果不需要其中任何一项，修改 `_pages/about.md` 的 YAML 头部里的 `profile` 字段即可关闭。编辑 `_bibliography/papers.bib`，Jekyll 会自动生成你的[论文页面](/al-folio/publications/)。
+我习惯以研究者和工程师的双重标准要求自己。我不仅关心算法在理论上是否自洽，更在意它烧进芯片、接入真实系统后，能否经受住物理世界和真实工况的考验。
 
-社交链接也可以放在这里。本站使用 [Font Awesome](https://fontawesome.com/) 与 [Academicons](https://jpswalsh.github.io/academicons/) 图标，样式如下所示。添加 Facebook、Twitter、LinkedIn 或 Google Scholar，也可以直接全部关闭。
+**从硬件端侧到复杂系统**
+早期的技术积累从底层硬件开始。我画过 `PCB` 板子、写过控制算法，也把轻量化 `Transformer` 部署到边缘设备上。这段经历让我对算力、软硬件协同、系统体系有直观的认知。
+
+**当前与未来：<span class="homepage-accent">Grid + LLM</span> 与智能决策**
+目前，我的核心研究聚焦于**<span class="homepage-accent">电力系统与人工智能的交叉</span>**，Grid + LLM 与 AI Agent 将是我持续深耕的主线。近期工作围绕基于图神经网络（`GNN`）的电网拓扑控制展开（如母线解列与并列）。此前，我开发过自主驱动编译器优化的 Agent 工作流，也做过垂直领域大模型的微调与 `RAG` 架构。我正尝试将大模型处理复杂逻辑与调度的能力，引入电网等具有极高壁垒和真实商业价值的场景中。
+
+**关于这里**
+这是我的 [Blog]({{ '/blog/' | relative_url }})，记录日常的学习与思考。如果有具体的工程问题或研究想法，随时交流。

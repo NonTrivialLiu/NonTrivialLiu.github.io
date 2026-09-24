@@ -4,7 +4,9 @@ layout: default
 <div class="post">
   <header class="post-header">
     <h1 class="post-title">
-      {% if site.title == 'blank' %}
+      {% if page.display_name %}
+        {{ page.display_name }}
+      {% elsif site.title == 'blank' %}
         <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
         {{ site.last_name }}
       {% else %}
@@ -27,8 +29,9 @@ layout: default
           {% endif %}
           {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
       30vw, 95vw"{% endcapture %}
+          {% assign profile_image_alt = page.display_name | default: page.profile.image %}
           {%
-            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
+            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=profile_image_alt
             cache_bust=true
           %}
         {% endif %}
@@ -38,7 +41,7 @@ layout: default
       </div>
     {% endif %}
 
-    <div class="clearfix">{{ content }}</div>
+    <div class="clearfix homepage-bio">{{ content }}</div>
 
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
@@ -82,3 +85,26 @@ layout: default
     {% endif %}
   </article>
 </div>
+
+<style>
+  .homepage-accent {
+    color: var(--global-theme-color);
+  }
+
+  .homepage-bio p > strong:first-child {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  @media (max-width: 575.98px) {
+    .post .profile img {
+      display: block;
+      max-width: 260px;
+      margin-inline: auto;
+    }
+
+    .post .profile .more-info {
+      text-align: center;
+    }
+  }
+</style>

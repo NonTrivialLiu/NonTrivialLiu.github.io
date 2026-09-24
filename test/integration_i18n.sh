@@ -63,9 +63,19 @@ dropdown="$site_dir/zh-cn/dropdown/index.html"
 distill="$site_dir/zh-cn/blog/2021/distill/index.html"
 
 # Translated interface labels reach the rendered page.
+assert_contains "$home" '你好，我是刘非凡。'
+assert_contains "$site_dir/index.html" 'My early technical background is rooted in low-level hardware.'
+assert_contains "$home" '从硬件端侧到复杂系统'
+assert_contains "$site_dir/index.html" 'From Edge Hardware to Complex Systems'
 assert_contains "$home" '>动态</a>'
 assert_contains "$home" '>最新文章</a>'
 assert_contains "$home" '>代表论文</a>'
+assert_contains "$home" 'id="liu2025edge"'
+assert_contains "$site_dir/index.html" 'id="liu2025edge"'
+assert_contains "$publications" 'id="liu2025edge"'
+assert_contains "$site_dir/publications/index.html" 'id="liu2025edge"'
+assert_contains "$home" 'https://doi.org/10.3390/drones9060386'
+assert_absent "$home" 'alberteinstein.com'
 assert_contains "$home" '版权所有 2026'
 # kramdown rewrites the straight quotes of that attribute into typographic
 # ones, so match the label itself.
@@ -87,9 +97,9 @@ assert_contains "$post" '创建于'
 assert_contains "$post" '如果本文对你有帮助'
 assert_contains "$archive" '归档'
 assert_contains "$not_found" '页面不存在'
-assert_contains "$not_found" '/al-folio/zh-cn/'
+assert_contains "$not_found" '/zh-cn/'
 assert_contains "$book" '封面：'
-assert_contains "$book" '<link rel="canonical" href="https://alshedivat.github.io/al-folio/books/the_godfather/">'
+assert_contains "$book" '<link rel="canonical" href="https://nontrivialliu.github.io/books/the_godfather/">'
 assert_absent "$book" 'hreflang="zh-cn"'
 assert_contains "$dropdown" '更多'
 assert_contains "$distill" '>目录</h3>'
@@ -241,7 +251,7 @@ state_restored = expected_dest && site.dest == expected_dest && site.instance_va
 site.process
 
 zh_home = File.join(destination, "zh-cn", "index.html")
-translated = File.file?(zh_home) && File.read(zh_home).include?("在这里写下你的个人简介")
+translated = File.file?(zh_home) && File.read(zh_home).include?("你好，我是刘非凡。")
 nested = File.directory?(File.join(destination, "zh-cn", "zh-cn"))
 
 unless state_restored

@@ -3,6 +3,26 @@
 
 @string{aps = {American Physical Society,}}
 
+@article{liu2025edge,
+  abbr        = {Drones},
+  bibtex_show = {true},
+  title       = {Edge-Deployed Band-Split Rotary Position Encoding Transformer for Ultra-Low-Signal-to-Noise-Ratio Unmanned Aerial Vehicle Speech Enhancement},
+  author      = {Liu, Feifan and Li, Muying and Guo, Luming and Guo, Hao and Cao, Jie and Zhao, Wei and Wang, Jun},
+  abstract    = {Addressing the significant challenge of speech enhancement in ultra-low-Signal-to-Noise-Ratio (SNR) scenarios for Unmanned Aerial Vehicle (UAV) voice communication, particularly under edge deployment constraints, this study proposes the Edge-Deployed Band-Split Rotary Position Encoding Transformer (Edge-BS-RoFormer), a novel, lightweight band-split rotary position encoding transformer. While existing deep learning methods face limitations in dynamic UAV noise suppression under such constraints, including insufficient harmonic modeling and high computational complexity, the proposed Edge-BS-RoFormer distinctively synergizes a band-split strategy for fine-grained spectral processing, a dual-dimension Rotary Position Encoding (RoPE) mechanism for superior joint time–frequency modeling, and FlashAttention to optimize computational efficiency, pivotal for its lightweight nature and robust ultra-low-SNR performance. Experiments on our self-constructed DroneNoise-LibriMix (DN-LM) dataset demonstrate Edge-BS-RoFormer’s superiority. Under a −15 dB SNR, it achieves Scale-Invariant Signal-to-Distortion Ratio (SI-SDR) improvements of 2.2 dB over Deep Complex U-Net (DCUNet), 25.0 dB over the Dual-Path Transformer Network (DPTNet), and 2.3 dB over HTDemucs. Correspondingly, the Perceptual Evaluation of Speech Quality (PESQ) is enhanced by 0.11, 0.18, and 0.15, respectively. Crucially, its efficacy for edge deployment is substantiated by a minimal model storage of 8.534 MB, 11.617 GFLOPs (an 89.6% reduction vs. DCUNet), a runtime memory footprint of under 500MB, a Real-Time Factor (RTF) of 0.325 (latency: 330.830 ms), and a power consumption of 6.536 W on an NVIDIA Jetson AGX Xavier, fulfilling real-time processing demands. This study delivers a validated lightweight solution, exemplified by its minimal computational overhead and real-time edge inference capability, for effective speech enhancement in complex UAV acoustic scenarios, including dynamic noise conditions. Furthermore, the open-sourced dataset and model contribute to advancing research and establishing standardized evaluation frameworks in this domain.},
+  journal     = {Drones},
+  volume      = {9},
+  number      = {6},
+  pages       = {386},
+  year        = {2025},
+  month       = {May},
+  publisher   = {MDPI AG},
+  doi         = {10.3390/drones9060386},
+  url         = {https://doi.org/10.3390/drones9060386},
+  html        = {https://www.mdpi.com/2504-446X/9/6/386},
+  code        = {https://github.com/NonTrivialLiu/Edge-BS-RoFormer-DroneNoise-LibriMix},
+  selected    = {true}
+}
+
 @book{einstein1920relativity,
   title     = {Relativity: the Special and General Theory},
   author    = {Einstein, Albert},

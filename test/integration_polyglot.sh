@@ -46,16 +46,16 @@ assert_contains "$site_dir/blog/2022/rtl/index.html" '<html lang="fa" dir="rtl"'
 
 # Paired pages advertise each other: the English home links the translation,
 # and the translated home links back to English.
-assert_contains "$site_dir/index.html" '<link rel="canonical" href="https://alshedivat.github.io/al-folio/">'
-assert_contains "$site_dir/zh-cn/index.html" '<link rel="canonical" href="https://alshedivat.github.io/al-folio/zh-cn/">'
+assert_contains "$site_dir/index.html" '<link rel="canonical" href="https://nontrivialliu.github.io/">'
+assert_contains "$site_dir/zh-cn/index.html" '<link rel="canonical" href="https://nontrivialliu.github.io/zh-cn/">'
 assert_contains "$site_dir/index.html" 'hreflang="zh-cn"'
-assert_contains "$site_dir/zh-cn/index.html" 'href="/al-folio/zh-cn/"'
-assert_contains "$site_dir/zh-cn/index.html" 'href="/al-folio/"'
+assert_contains "$site_dir/zh-cn/index.html" 'href="/zh-cn/"'
+assert_contains "$site_dir/zh-cn/index.html" 'href="/"'
 
 # A page that only exists in English keeps the switcher disabled, canonicalizes
 # to the default language, and publishes no translation alternate.
 assert_contains "$site_dir/plugins/index.html" 'class="nav-link disabled" lang="zh-cn" aria-disabled="true"'
-assert_contains "$site_dir/plugins/index.html" '<link rel="canonical" href="https://alshedivat.github.io/al-folio/plugins/">'
+assert_contains "$site_dir/plugins/index.html" '<link rel="canonical" href="https://nontrivialliu.github.io/plugins/">'
 assert_not_contains "$site_dir/plugins/index.html" 'hreflang="zh-cn"'
 
 printf 'Polyglot integration checks passed.\n'
