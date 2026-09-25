@@ -6,14 +6,13 @@ title: blank # the website title (if blank, full name will be used instead)
 first_name: Feifan
 middle_name:
 last_name: Liu
-contact_note: >
-  You can even add a little note about which of these is the best way to reach you.
-description: "Researcher & Engineer. Focused on AI Agents, Power Systems, and Hardware-Software Co-design."
+contact_note: ""
+description: "Feifan Liu (NonTrivialLiu) is an Electronic Information master's student at the ZJU-UIUC Institute (ZJUI), Zhejiang University, working on AI agents and power systems."
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
   Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
-keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
+keywords:
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: ⚛️ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 apple_touch_icon: # image name in /assets/img/ (or a rooted path / absolute URL) used for iOS home-screen bookmarks; needs a real 180x180 PNG, since Safari ignores the emoji favicon above. Left empty, iOS falls back to a screenshot of the page.
@@ -127,9 +126,9 @@ max_width: 930px
 # -----------------------------------------------------------------------------
 # Display links to the page with a preview object on social media.
 # see https://schema.org/docs/faq.html for more information
-serve_og_meta: false # Include Open Graph meta tags in the HTML head
-serve_schema_org: false # Include Schema.org in the HTML head
-og_image: # The site-wide (default for all links) Open Graph preview image
+serve_og_meta: false # Site-specific Open Graph metadata is rendered in _includes/head.liquid.
+serve_schema_org: false # The homepage Person entity is rendered in _includes/head.liquid.
+og_image: /assets/img/prof_pic.jpg
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification
@@ -153,8 +152,8 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: al-folio # blog_name will be displayed in your blog page
-blog_description: a simple whitespace theme for academics
+blog_name: Feifan Liu · NonTrivialLiu
+blog_description: Notes on AI agents, power systems, and engineering.
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts
 
@@ -190,17 +189,7 @@ disqus_shortname: al-folio # put your disqus shortname
 # If you have blog posts published on medium.com or other external sources,
 # you can display them in your blog by adding a link to the RSS feed.
 # Optional: Set default categories and tags for posts from each source.
-external_sources:
-  - name: medium.com
-    rss_url: https://medium.com/@al-folio/feed
-    categories: [external-posts]
-    tags: [medium]
-  - name: Google Blog
-    posts:
-      - url: https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/
-        published_date: 2024-05-14
-    categories: [external-posts]
-    tags: [google]
+external_sources: []
 
 # -----------------------------------------------------------------------------
 # Newsletter

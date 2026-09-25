@@ -4,6 +4,7 @@ permalink: /cv/
 title: 简历
 lang: zh-cn
 page_id: cv
+sitemap: false
 nav: false
 nav_order: 5
 cv_pdf: /assets/pdf/example_pdf.pdf # 也可以填外部链接

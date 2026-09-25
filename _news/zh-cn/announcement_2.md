@@ -1,4 +1,5 @@
 ---
+sitemap: false
 layout: post
 title: 一则带详细内容的动态
 date: 2015-11-07 16:11:00-0400

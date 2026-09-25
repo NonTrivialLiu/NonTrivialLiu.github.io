@@ -4,7 +4,7 @@ permalink: /repositories/
 title: repositories
 lang: en
 page_id: repositories
-description: Selected public repositories from my GitHub profile.
+description: Selected public GitHub repositories by Feifan Liu (NonTrivialLiu).
 nav: true
 nav_order: 4
 ---

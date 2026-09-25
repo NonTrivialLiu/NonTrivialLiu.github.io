@@ -14,6 +14,8 @@ profile:
   more_info: >
     <p>浙江大学 ZJU-UIUC 联合学院</p>
     <p>电子信息专业</p>
+    <p>河南大学 · 自动化专业（学士）</p>
+    <p><a href="https://news.eeworld.com.cn/mp/STM32/a294635.jspx">STM32 嵌入式大赛报道</a></p>
     <p>liu.feifan.ai@outlook.com</p>
 
 selected_papers: true

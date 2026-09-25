@@ -1,4 +1,5 @@
 ---
+sitemap: false
 layout: post
 title: a post with advanced image components
 date: 2024-01-27 11:46:00

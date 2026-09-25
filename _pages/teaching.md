@@ -4,6 +4,7 @@ permalink: /teaching/
 title: teaching
 lang: en
 page_id: teaching
+sitemap: false
 description: Course materials, schedules, and resources for classes taught.
 nav: false
 nav_order: 6

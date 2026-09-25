@@ -1,4 +1,5 @@
 ---
+sitemap: false
 layout: page
 title: project 4
 description: another without an image

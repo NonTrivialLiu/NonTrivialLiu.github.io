@@ -4,6 +4,7 @@ permalink: /people/
 title: people
 lang: en
 page_id: people
+sitemap: false
 description: members of the lab or group
 nav: true
 nav_order: 7

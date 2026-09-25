@@ -11,11 +11,19 @@ on:
       - "Gemfile"
       - "Gemfile.lock"
       - "_config.yml"
+      - "_bibliography/**"
+      - "_books/**"
       - "_data/**"
+      - "_includes/**"
+      - "_news/**"
       - "_pages/**"
+      - "_plugins/**"
       - "_posts/**"
       - "_projects/**"
+      - "_teachings/**"
       - "assets/**"
+      - "robots.txt"
+      - "sitemap.xml"
       - "test/**"
       - "package.json"
       - "package-lock.json"
@@ -29,11 +37,19 @@ on:
       - "Gemfile"
       - "Gemfile.lock"
       - "_config.yml"
+      - "_bibliography/**"
+      - "_books/**"
       - "_data/**"
+      - "_includes/**"
+      - "_news/**"
       - "_pages/**"
+      - "_plugins/**"
       - "_posts/**"
       - "_projects/**"
+      - "_teachings/**"
       - "assets/**"
+      - "robots.txt"
+      - "sitemap.xml"
       - "test/**"
       - "package.json"
       - "package-lock.json"
@@ -101,3 +117,6 @@ jobs:
 
       - name: Run multilingual integration checks 🌐
         run: bash test/integration_polyglot.sh
+
+      - name: Run search integration checks 🔎
+        run: bash test/integration_seo.sh

@@ -1,4 +1,5 @@
 ---
+sitemap: false
 layout: page
 title: 项目 1
 permalink: /projects/1_project/ # 与英文版保持一致，避免 URL 里出现 zh-cn 路径段

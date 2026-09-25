@@ -1,4 +1,5 @@
 ---
+sitemap: false
 layout: course
 title: 数据科学基础
 permalink: /teachings/data-science-fundamentals/ # 与英文版保持一致，避免 URL 里出现 zh-cn 路径段

@@ -4,6 +4,7 @@ title: bookshelf
 permalink: /books/
 lang: en
 page_id: bookshelf
+sitemap: false
 nav: true
 nav_order: 8
 collection: books

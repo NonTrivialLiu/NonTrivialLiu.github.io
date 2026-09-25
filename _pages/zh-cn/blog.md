@@ -2,6 +2,7 @@
 layout: default
 permalink: /blog/
 title: 文章
+description: 刘非凡（NonTrivialLiu）关于 AI Agent、电力系统与工程实践的文章。
 lang: zh-cn
 nav: true
 nav_order: 1

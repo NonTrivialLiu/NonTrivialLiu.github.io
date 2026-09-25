@@ -4,7 +4,7 @@ permalink: /repositories/
 title: 开源
 lang: zh-cn
 page_id: repositories
-description: 我在 GitHub 上的部分公开仓库。
+description: 刘非凡（NonTrivialLiu）在 GitHub 上的部分公开仓库。
 nav: true
 nav_order: 4
 ---

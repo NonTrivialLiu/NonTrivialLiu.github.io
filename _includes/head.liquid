@@ -1,5 +1,77 @@
 <!-- Metadata, OpenGraph and Schema.org -->
 {% include metadata.liquid %}
+{% assign site_person_name = site.first_name | append: ' ' | append: site.last_name %}
+
+{% assign hide_from_search = false %}
+{% if page.sitemap == false %}
+  {% assign hide_from_search = true %}
+{% endif %}
+{% if page.rendered_lang and page.rendered_lang != site.active_lang %}
+  {% assign hide_from_search = true %}
+{% endif %}
+{% if page.layout == 'archive' %}
+  {% assign hide_from_search = true %}
+{% endif %}
+{% if page.url contains '/blog/page/' %}
+  {% assign hide_from_search = true %}
+{% endif %}
+{% if hide_from_search %}
+  <meta name="robots" content="noindex">
+{% endif %}
+
+{% if page.page_id == 'about' %}
+  {% assign homepage_url = site.url | append: site.baseurl | append: '/' %}
+  {% assign profile_image_url = site.url | append: site.baseurl | append: '/assets/img/' | append: page.profile.image %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": {{ homepage_url | append: '#person' | jsonify }},
+      "name": {{ site_person_name | jsonify }},
+      "alternateName": ["刘非凡", {{ site.data.socials.github_username | jsonify }}],
+      "url": {{ homepage_url | jsonify }},
+      "image": {{ profile_image_url | jsonify }},
+      "sameAs": [
+        {{ site.data.socials.github_username | prepend: 'https://github.com/' | jsonify }},
+        {{ site.data.socials.orcid_id | prepend: 'https://orcid.org/' | jsonify }},
+        {{ site.data.socials.sciprofiles.url | jsonify }}
+      ],
+      "affiliation": {
+        "@type": "Organization",
+        "name": "ZJU-UIUC Institute (ZJUI), Zhejiang University"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Henan University",
+        "url": "https://www.henu.edu.cn/"
+      }
+    }
+  </script>
+{% endif %}
+
+{% unless hide_from_search %}
+  {% assign current_lang = site.active_lang | default: site.default_lang %}
+  {% assign social_path = page.permalink_lang[current_lang] | default: page.permalink | default: page.url %}
+  {% capture social_url %}{{ site.url }}{{ site.baseurl }}{% if current_lang != site.default_lang %}/{{ current_lang }}{% endif %}{{ social_path }}{% endcapture %}
+  {% assign social_title = page.display_name | default: page.title | default: site_person_name %}
+  {% assign social_description = page.description | default: site.description %}
+  {% assign social_image = page.og_image | default: site.og_image %}
+  {% assign social_image_url = social_image | absolute_url %}
+  <meta property="og:site_name" content="{{ site_person_name }} · {{ site.data.socials.github_username }}">
+  <meta property="og:type" content="{% if page.date %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{{ social_title | escape }}">
+  <meta property="og:description" content="{{ social_description | escape }}">
+  <meta property="og:url" content="{{ social_url | escape }}">
+  <meta property="og:image" content="{{ social_image_url | escape }}">
+  <meta property="og:locale" content="{% if current_lang == 'zh-cn' %}zh_CN{% else %}en_US{% endif %}">
+  {% if page.date %}
+    <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+  {% endif %}
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ social_title | escape }}">
+  <meta name="twitter:description" content="{{ social_description | escape }}">
+  <meta name="twitter:image" content="{{ social_image_url | escape }}">
+{% endunless %}
 
 <!-- Security: Content Security Policy -->
 <!-- Permissive CSP suitable for academic websites. Allows external images, videos, and common embed services. -->
@@ -123,7 +195,15 @@
 {% if page.layout == 'cv' and site.plugins contains 'al_folio_cv' and site.al_folio.features.cv.enabled != false %}
   <link rel="stylesheet" href="{{ '/assets/css/al-folio-cv.css' | relative_url | bust_file_cache }}">
 {% endif %}
-{% I18n_Headers %}
+{% assign source_lang = page.available_languages.first %}
+{% if page.available_languages.size == 1 and source_lang != site.default_lang %}
+  {% assign source_permalink = page.permalink_lang[source_lang] %}
+  {% capture source_url %}{{ site.url }}{{ site.baseurl }}/{{ source_lang }}{{ source_permalink }}{% endcapture %}
+  <link rel="canonical" href="{{ source_url }}">
+  <link rel="alternate" hreflang="{{ source_lang }}" href="{{ source_url }}">
+{% else %}
+  {% I18n_Headers %}
+{% endif %}
 
 {% if site.enable_darkmode %}
   <!-- Dark Mode -->

@@ -2,6 +2,7 @@
 layout: default
 permalink: /blog/
 title: blog
+description: Research notes by Feifan Liu (NonTrivialLiu) on AI agents, power systems, and engineering.
 lang: en
 nav: true
 nav_order: 1

@@ -1,4 +1,5 @@
 ---
+sitemap: false
 layout: post
 title: a post with bibliography
 date: 2023-07-12 09:56:00-0400

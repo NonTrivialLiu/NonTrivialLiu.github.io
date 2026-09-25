@@ -4,6 +4,7 @@ title: projects
 permalink: /projects/
 lang: en
 page_id: projects
+sitemap: false
 description: A growing collection of your cool projects.
 nav: true
 nav_order: 3

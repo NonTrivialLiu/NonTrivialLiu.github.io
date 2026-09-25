@@ -4,6 +4,7 @@ permalink: /people/
 title: 合作者
 lang: zh-cn
 page_id: people
+sitemap: false
 description: 课题组或研究团队成员
 nav: true
 nav_order: 7

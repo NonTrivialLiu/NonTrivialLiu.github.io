@@ -4,6 +4,7 @@ title: 项目
 permalink: /projects/
 lang: zh-cn
 page_id: projects
+sitemap: false
 description: 持续积累的科研与工程项目合集。
 nav: true
 nav_order: 3

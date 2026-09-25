@@ -14,6 +14,8 @@ profile:
   more_info: >
     <p>ZJU-UIUC Institute, Zhejiang University</p>
     <p>Electronic Information</p>
+    <p>Henan University · Bachelor's degree in Automation</p>
+    <p><a href="https://news.eeworld.com.cn/mp/STM32/a294635.jspx">STM32 competition coverage</a></p>
     <p>liu.feifan.ai@outlook.com</p>
 
 selected_papers: true

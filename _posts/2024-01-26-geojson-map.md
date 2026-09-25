@@ -1,4 +1,5 @@
 ---
+sitemap: false
 layout: post
 title: a post with geojson
 date: 2024-01-26 17:57:00

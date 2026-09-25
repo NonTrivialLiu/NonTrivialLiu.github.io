@@ -4,6 +4,7 @@ permalink: /teaching/
 title: 教学
 lang: zh-cn
 page_id: teaching
+sitemap: false
 description: 所授课程的课件、课程安排与参考资料。
 nav: false
 nav_order: 6

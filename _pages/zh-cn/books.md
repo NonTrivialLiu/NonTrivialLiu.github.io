@@ -4,6 +4,7 @@ title: 书架
 permalink: /books/
 lang: zh-cn
 page_id: bookshelf
+sitemap: false
 nav: true
 nav_order: 8
 collection: books

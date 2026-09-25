@@ -1,0 +1,55 @@
+---
+layout: null
+permalink: /sitemap.xml
+sitemap: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {% assign collections = site.collections | where_exp: 'collection', 'collection.output != false' %}
+  {% for collection in collections %}
+    {% for item in collection.docs %}
+      {% if item.sitemap != false %}
+        {% if item.permalink_lang and item.permalink_lang.size > 0 %}
+          {% for language in site.languages %}
+            {% assign permalink = item.permalink_lang[language] %}
+            {% if permalink %}
+              <url>
+                <loc>{{ site.url }}{{ site.baseurl }}{% if language != site.default_lang %}/{{ language }}{% endif %}{{ permalink | replace: '/index.html', '/' | xml_escape }}</loc>
+                {% if item.last_modified_at or item.date %}
+                  <lastmod>{{ item.last_modified_at | default: item.date | date_to_xmlschema }}</lastmod>
+                {% endif %}
+              </url>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          <url>
+            <loc>{{ item.url | replace: '/index.html', '/' | absolute_url | xml_escape }}</loc>
+            {% if item.last_modified_at or item.date %}
+              <lastmod>{{ item.last_modified_at | default: item.date | date_to_xmlschema }}</lastmod>
+            {% endif %}
+          </url>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+  {% for item in site.html_pages %}
+    {% if item.sitemap != false and item.url != '/404.html' and item.layout != 'archive' %}
+      {% unless item.url contains '/blog/page/' %}
+        {% if item.permalink_lang and item.permalink_lang.size > 0 %}
+          {% for language in site.languages %}
+            {% assign permalink = item.permalink_lang[language] %}
+            {% if permalink %}
+              <url>
+                <loc>{{ site.url }}{{ site.baseurl }}{% if language != site.default_lang %}/{{ language }}{% endif %}{{ permalink | replace: '/index.html', '/' | xml_escape }}</loc>
+              </url>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          <url>
+            <loc>{{ item.url | replace: '/index.html', '/' | absolute_url | xml_escape }}</loc>
+          </url>
+        {% endif %}
+      {% endunless %}
+    {% endif %}
+  {% endfor %}
+</urlset>

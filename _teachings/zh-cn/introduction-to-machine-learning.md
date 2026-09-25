@@ -1,4 +1,5 @@
 ---
+sitemap: false
 layout: course
 title: 机器学习导论
 permalink: /teachings/introduction-to-machine-learning/ # 与英文版保持一致，避免 URL 里出现 zh-cn 路径段

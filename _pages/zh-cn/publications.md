@@ -4,7 +4,7 @@ permalink: /publications/
 title: 论文
 lang: zh-cn
 page_id: publications
-description: 按类别分组、按时间倒序排列的论文列表，由 jekyll-scholar 生成。
+description: 刘非凡（NonTrivialLiu）的研究论文，涵盖无人机语音增强与端侧部署。
 nav: true
 nav_order: 2
 ---
@@ -17,6 +17,6 @@ nav_order: 2
 
 <div class="publications">
 
-{% bibliography %}
+{% bibliography --query @*[selected=true]* %}
 
 </div>
