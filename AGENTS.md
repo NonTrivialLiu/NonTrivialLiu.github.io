@@ -54,11 +54,43 @@
 
 ## 本地预览与发布
 
-所有构建、测试和预览在 Mac 本地执行。运行 `docker compose up -d` 后访问英文首页 `http://127.0.0.1:8080/` 与简中首页 `http://127.0.0.1:8080/zh-cn/`；容器内构建输出位于 `/tmp/_site`。Python 辅助工作使用 `uv` 隔离依赖。
+日常构建、测试和预览在 Mac 本地执行。启动 Docker Desktop，确认引擎就绪，再运行站点容器：
+
+```bash
+open -a Docker
+docker info >/dev/null
+docker compose up -d
+docker compose ps
+docker compose logs --tail=80 jekyll
+```
+
+英文首页为 `http://127.0.0.1:8080/`，简中首页为 `http://127.0.0.1:8080/zh-cn/`；预览构建输出位于容器内的 `/tmp/_site`。结束预览使用 `docker compose down`。Python 辅助工作使用 `uv` 隔离依赖。
+
+生产模式预检使用同一容器；`test/polyglot_config.yml` 关闭外部文章源，保证本地构建可复现：
+
+```bash
+docker compose exec -T jekyll env JEKYLL_ENV=production bundle exec jekyll build \
+  --config _config.yml,test/polyglot_config.yml --destination /tmp/_site-prod-check
+```
 
 发布前核对 `_config.yml` 的 `url`、`baseurl` 与语言设置是否对应目标地址，以及 `.github/workflows/deploy.yml` 的触发条件与产物目录。站内链接沿用 Jekyll 的 `relative_url` 等过滤器。
 
-发布后核对 GitHub Actions 的部署结果、公开站点的双语页面及关键资源；本地构建结果负责预检，线上响应负责发布验收。
+`deploy.yml` 在符合路径条件的 `main` 推送后执行完整生产构建，并将 `_site` 发布至 `gh-pages`。发布验收先确认工作流的 `headSha` 对应目标提交，再核对运行结果、Pages 来源和公开地址：
+
+将下列命令中的 `<run-id>` 替换为列表返回的 `databaseId`。
+
+```bash
+gh run list --workflow deploy.yml --branch main --limit 5 \
+  --json databaseId,headSha,status,conclusion,url
+gh run view <run-id> --exit-status
+gh run view <run-id> --log-failed
+gh api repos/NonTrivialLiu/NonTrivialLiu.github.io/pages \
+  --jq '{status,html_url,source}'
+curl -fsSI https://nontrivialliu.github.io/
+curl -fsSI https://nontrivialliu.github.io/zh-cn/
+```
+
+公开页面及本次涉及的关键资源以浏览器核对内容与交互；本地生产构建提供发布前证据。
 
 运行态排查按照症状选择入口：
 
