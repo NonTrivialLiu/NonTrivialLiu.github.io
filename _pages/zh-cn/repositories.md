@@ -4,7 +4,7 @@ permalink: /repositories/
 title: 开源
 lang: zh-cn
 page_id: repositories
-description: 编辑 `_data/repositories.yml`，改动 `github_users` 与 `github_repos` 两个列表，换成你自己的 GitHub 账号与仓库。
+description: 我在 GitHub 上的部分公开仓库。
 nav: true
 nav_order: 4
 ---

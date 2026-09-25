@@ -4,7 +4,7 @@ permalink: /repositories/
 title: repositories
 lang: en
 page_id: repositories
-description: Edit the `_data/repositories.yml` and change the `github_users` and `github_repos` lists to include your own GitHub profile and repositories.
+description: Selected public repositories from my GitHub profile.
 nav: true
 nav_order: 4
 ---

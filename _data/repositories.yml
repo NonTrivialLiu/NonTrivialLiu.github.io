@@ -1,14 +1,13 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - NonTrivialLiu
 
 repo_description_lines_max: 2
 
 github_repos:
-  - alshedivat/al-folio
-  - jekyll/jekyll
-  - twbs/bootstrap
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - mathjax/MathJax
-  - jpswalsh/academicons
+  - NonTrivialLiu/AudioSort_TFLM
+  - NonTrivialLiu/Edge-BS-RoFormer-DroneNoise-LibriMix
+  - NonTrivialLiu/NEAI-DroneFaultDetect
+  - NonTrivialLiu/Markdown2Notion
+  - NonTrivialLiu/enPDF2zhMD
+  - NonTrivialLiu/TemperatureControl
+  - NonTrivialLiu/FF-Studio-Resources
