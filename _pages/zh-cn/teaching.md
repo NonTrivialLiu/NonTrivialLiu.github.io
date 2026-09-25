@@ -5,7 +5,7 @@ title: 教学
 lang: zh-cn
 page_id: teaching
 description: 所授课程的课件、课程安排与参考资料。
-nav: true
+nav: false
 nav_order: 6
 calendar: true
 ---

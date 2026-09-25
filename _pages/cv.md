@@ -4,7 +4,7 @@ permalink: /cv/
 title: CV
 lang: en
 page_id: cv
-nav: true
+nav: false
 nav_order: 5
 cv_pdf: /assets/pdf/example_pdf.pdf # you can also use external links here
 cv_format: rendercv # options: rendercv, jsonresume
