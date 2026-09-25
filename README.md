@@ -166,7 +166,8 @@ Comprehensive guides for all aspects of your al-folio website:
 - **[Troubleshooting](docs/TROUBLESHOOTING.md)** – Fix common issues (deployment, build, styling, content)
 - **[FAQ](docs/FAQ.md)** – Frequently asked questions and solutions
 - **[Analytics](docs/ANALYTICS.md)** – Add website analytics and visitor tracking
-- **[SEO Guide](docs/SEO.md)** – Optimize for search engines and improve discoverability
+- **[SEO Guide](docs/SEO.md)** – Original al-folio search optimization guide
+- **[Personal SEO and GEO](docs/PERSONAL_SEO.md)** – Maintain this site's identity, indexing, and AI-search visibility
 - **[Plugin Catalog](https://alshedivat.github.io/al-folio/plugins/)** – Featured and bundled plugin metadata ([page source](_pages/plugins.md))
 
 ## Features

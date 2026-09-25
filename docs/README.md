@@ -10,7 +10,8 @@ These guides cover the `al-folio` v1.x starter and its pluginized runtime.
 - [FAQ](FAQ.md): common deployment, upgrade, plugin, and troubleshooting questions.
 - [Troubleshooting](TROUBLESHOOTING.md): build, deployment, styling, and content debugging.
 - [Analytics](ANALYTICS.md): analytics provider setup.
-- [SEO](SEO.md): search-engine and social preview setup.
+- [SEO Best Practices](SEO.md): original al-folio search optimization guide.
+- [Personal SEO and GEO](PERSONAL_SEO.md): this site's identity, indexing, AI search, and webmaster operations.
 
 ## Maintainer Guides
 

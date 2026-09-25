@@ -23,16 +23,16 @@
 
 ## 内容与代码归属
 
-| 任务                                         | 修改入口                                                               | 深入资料                                                                               |
-| -------------------------------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| 固定页面、导航、文章、动态、项目、教学、书评 | `_pages/`、`_posts/`、`_news/`、`_projects/`、`_teachings/`、`_books/` | [内容维护](docs/CUSTOMIZE.md)                                                          |
-| GitHub 仓库展示                              | `_data/repositories.yml`、对应双语页面                                 | [内容维护](docs/CUSTOMIZE.md#modifying-the-user-and-repository-information)            |
-| 论文、简历、社交资料与图片                   | `_bibliography/`、`_data/`、`assets/`                                  | [内容维护](docs/CUSTOMIZE.md)                                                          |
-| 英文与简中配对、界面词条、语言路由           | 对应内容目录、`_data/en/`、`_data/zh-cn/`                              | [双语维护](docs/I18N.md)                                                               |
-| 站点身份、功能开关与依赖                     | `_config.yml`、`Gemfile`、`Gemfile.lock`                               | [架构说明](docs/ARCHITECTURE.md)                                                       |
-| 布局、组件与功能行为                         | 对应 al-folio gem；本站定制使用已登记的本地覆盖                        | [归属表](docs/BOUNDARIES.md) · [覆盖说明](docs/I18N.md#模板覆盖)                       |
-| 构建检查与浏览器验收                         | `test/`、`package.json`                                                | [安装部署](docs/INSTALL.md) · [双语维护](docs/I18N.md#验证)                            |
-| 发布、SEO 与运行故障                         | `.github/workflows/`、站点配置和相关文档                               | [安装部署](docs/INSTALL.md) · [SEO](docs/SEO.md) · [故障排查](docs/TROUBLESHOOTING.md) |
+| 任务                                         | 修改入口                                                               | 深入资料                                                                                                                                   |
+| -------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| 固定页面、导航、文章、动态、项目、教学、书评 | `_pages/`、`_posts/`、`_news/`、`_projects/`、`_teachings/`、`_books/` | [内容维护](docs/CUSTOMIZE.md)                                                                                                              |
+| GitHub 仓库展示                              | `_data/repositories.yml`、对应双语页面                                 | [内容维护](docs/CUSTOMIZE.md#modifying-the-user-and-repository-information)                                                                |
+| 论文、简历、社交资料与图片                   | `_bibliography/`、`_data/`、`assets/`                                  | [内容维护](docs/CUSTOMIZE.md)                                                                                                              |
+| 英文与简中配对、界面词条、语言路由           | 对应内容目录、`_data/en/`、`_data/zh-cn/`                              | [双语维护](docs/I18N.md)                                                                                                                   |
+| 站点身份、功能开关与依赖                     | `_config.yml`、`Gemfile`、`Gemfile.lock`                               | [架构说明](docs/ARCHITECTURE.md)                                                                                                           |
+| 布局、组件与功能行为                         | 对应 al-folio gem；本站定制使用已登记的本地覆盖                        | [归属表](docs/BOUNDARIES.md) · [覆盖说明](docs/I18N.md#模板覆盖)                                                                           |
+| 构建检查与浏览器验收                         | `test/`、`package.json`                                                | [安装部署](docs/INSTALL.md) · [双语维护](docs/I18N.md#验证)                                                                                |
+| 发布、SEO 与运行故障                         | `.github/workflows/`、站点配置和相关文档                               | [安装部署](docs/INSTALL.md) · [本站 SEO 与 GEO](docs/PERSONAL_SEO.md) · [模板 SEO 指南](docs/SEO.md) · [故障排查](docs/TROUBLESHOOTING.md) |
 
 修改插件依赖时同步核对 `Gemfile`、`Gemfile.lock` 与 `_config.yml` 的 `plugins`；版本及开关以当前文件为准。
 
@@ -48,7 +48,7 @@
 | 论文与简历             | 作者顺序、题名、期刊、DOI、BibTeX 键及 CV 数据与来源一致；引用元数据保持单一来源，`pdf`、`preview` 对应可访问的原文与配图。 |
 | 图片、音视频与下载资源 | 路径可访问，替代文本描述内容，来源及使用权限可追溯。                                                                        |
 | 双语页面               | `page_id` 与英文 slug 稳定，译文使用独立内容文件；词条与切换规则见 [双语维护](docs/I18N.md)。                               |
-| 搜索与社交预览         | 标题、摘要、canonical、hreflang 和结构化数据以构建结果核对；配置入口见 [SEO](docs/SEO.md)。                                 |
+| 搜索与社交预览         | 标题、摘要、canonical、hreflang 和结构化数据以构建结果核对；配置入口见 [本站 SEO 与 GEO](docs/PERSONAL_SEO.md)。            |
 
 > 发布内容以目标读者可见的页面为验收对象；构建成功同时需要页面链接、资源和元数据检查。
 
@@ -112,6 +112,7 @@ curl -fsSI https://nontrivialliu.github.io/zh-cn/
 | 双语内容、词条和路由                      | `docker compose exec -T jekyll bash test/integration_i18n.sh` 与 `docker compose exec -T jekyll bash test/integration_polyglot.sh` |
 | 插件配置、模板覆盖、部署逻辑              | 对应 `test/integration_*.sh` 与站点构建；覆盖差异使用上文的审计命令                                                                |
 | 可见界面或交互                            | 本地预览关键页面；相关场景使用 `npm run test:visual`                                                                               |
+| 搜索身份、站点地图与索引范围              | `docker compose exec -T jekyll bash test/integration_seo.sh`                                                                       |
 
 完成前检查差异与生成页面，交付说明列出实际执行的命令、验证结果和剩余限制。视觉快照更新依据预期界面变化执行。
 
