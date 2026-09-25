@@ -86,7 +86,9 @@ pagination:
                     {% assign year = post.date | date: "%Y" %}
 
                     <p class="post-meta">
-                      {{ read_time }} {{ 'blog.min_read' | t }} &nbsp; &middot; &nbsp;
+                      {% unless post.show_read_time == false %}
+                        {{ read_time }} {{ 'blog.min_read' | t }} &nbsp; &middot; &nbsp;
+                      {% endunless %}
                       <a href="{{ year | prepend: '/blog/' | relative_url }}">
                         <i class="fa-solid fa-calendar fa-sm"></i> {{ year }} </a>
                     </p>
@@ -143,7 +145,9 @@ pagination:
       </h3>
       <p>{{ post.description }}</p>
       <p class="post-meta">
-        {{ read_time }} {{ 'blog.min_read' | t }} &nbsp; &middot; &nbsp;
+        {% unless post.show_read_time == false %}
+          {{ read_time }} {{ 'blog.min_read' | t }} &nbsp; &middot; &nbsp;
+        {% endunless %}
         {{ post.date | date: date_long }}
         {% if post.external_source %}
         &nbsp; &middot; &nbsp; {{ post.external_source }}
@@ -181,7 +185,7 @@ pagination:
 </div>
 
   <div class="col-sm-3">
-    <img class="card-img" src="{{ post.thumbnail | relative_url }}" style="object-fit: cover; height: 90%" alt="image">
+    <img class="card-img" src="{{ post.thumbnail | relative_url }}" style="object-fit: cover; height: 90%" alt="{{ post.title | escape }}">
   </div>
 </div>
 {% endif %}
