@@ -1,0 +1,44 @@
+people:
+  - name:
+      en: Ruisheng Diao
+      zh-cn: 刁瑞盛
+    organization:
+      en: ZJU-UIUC Institute, Zhejiang University
+      zh-cn: 浙江大学 ZJU-UIUC 联合学院
+    description:
+      en: Power system stability, grid modeling and simulation, and planning and control.
+      zh-cn: 电力系统安全与稳定、电网建模仿真，以及新型电力系统规划与控制。
+    website: https://zjui.intl.zju.edu.cn/node/1692
+    scholar: https://scholar.google.com/citations?user=t1jaia0AAAAJ&hl=en
+
+sites:
+  - name: uulin
+    domain: uulin.cn
+    url: https://uulin.cn/
+    description:
+      en: Notes on Orange Pi, Linux, and personal devices.
+      zh-cn: 记录 Orange Pi、Linux 与个人设备的折腾实践。
+  - name: rozen12123
+    domain: rozen12123.github.io
+    url: https://rozen12123.github.io/
+    description:
+      en: Notes on machine learning, embedded development, and coursework.
+      zh-cn: 分享机器学习、嵌入式开发与课程学习笔记。
+  - name: ssy
+    domain: ssy1938010014.github.io
+    url: https://ssy1938010014.github.io/
+    description:
+      en: Learning notes on FPGA, SystemVerilog, and Linux.
+      zh-cn: 记录 FPGA、SystemVerilog 与 Linux 的学习过程。
+  - name: y006
+    domain: y006.github.io
+    url: https://y006.github.io/
+    description:
+      en: Electronic projects, course notes, and study resources.
+      zh-cn: 分享电子制作、课程笔记与学习资料。
+  - name: pomelohan
+    domain: github.com/pomelohan
+    url: https://github.com/pomelohan
+    description:
+      en: C/C++, Linux kernel, and Android development.
+      zh-cn: 关注 C/C++、Linux 内核与 Android 开发。
