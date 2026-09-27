@@ -23,7 +23,7 @@ ruby -rjson -rrexml/document -ruri -e '
   check.call(urls.uniq == urls, "Sitemap contains duplicate URLs")
   check.call(urls.all? { |url| url.start_with?(origin + "/") }, "Sitemap contains another host")
 
-  expected = %w[/ /zh-cn/ /blog/ /zh-cn/blog/ /publications/ /zh-cn/publications/ /repositories/ /zh-cn/repositories/ /zh-cn/blog/gnn-intro-translation/]
+  expected = %w[/ /zh-cn/ /blog/ /zh-cn/blog/ /publications/ /zh-cn/publications/ /repositories/ /zh-cn/repositories/ /people/ /zh-cn/people/ /zh-cn/blog/gnn-intro-translation/]
   expected.each { |path| check.call(urls.include?(origin + path), "Sitemap is missing #{path}") }
   urls.each do |url|
     path = URI(url).path
@@ -47,7 +47,7 @@ ruby -rjson -rrexml/document -ruri -e '
   person = home.scan(%r{<script type="application/ld\+json">\s*(\{.*?\})\s*</script>}m).map { |json| JSON.parse(json.first) }.find { |data| data["@type"] == "Person" }
   check.call(person && person["@id"] == origin + "/#person", "Person identity is missing")
   check.call(person["alternateName"].include?("刘非凡") && person["alternateName"].include?("NonTrivialLiu"), "Person aliases are incomplete")
-  %w[https://github.com/NonTrivialLiu https://orcid.org/0009-0004-7514-3994 https://sciprofiles.com/profile/feifan-liu].each do |url|
+  %w[https://github.com/NonTrivialLiu https://orcid.org/0009-0009-7592-0999 https://sciprofiles.com/profile/feifan-liu].each do |url|
     check.call(person["sameAs"].include?(url), "Person profile is missing: #{url}")
   end
 
