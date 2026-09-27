@@ -34,6 +34,10 @@ ruby -rjson -rrexml/document -ruri -e '
 
   home = read.call("index.html")
   zh_home = read.call("zh-cn/index.html")
+  %w[fl-monogram.svg fl-monogram-180.png].each do |asset|
+    check.call(File.file?(File.join(root, "assets/img", asset)), "Site icon asset is missing: #{asset}")
+    check.call(home.include?("/assets/img/#{asset}") && zh_home.include?("/assets/img/#{asset}"), "Site icon is missing from a homepage: #{asset}")
+  end
   check.call(home.include?("Henan University") && zh_home.include?("河南大学"), "Education is missing from a homepage")
   coverage = "https://news.eeworld.com.cn/mp/STM32/a294635.jspx"
   check.call(home.include?(coverage) && zh_home.include?(coverage), "STM32 coverage is missing from a homepage")
