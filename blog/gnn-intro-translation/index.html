@@ -1,4 +1,13 @@
-<!DOCTYPE html> <html lang="zh-cn" data-copy-code-aria="Copy code to clipboard"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> 【译文】图神经网络入门指南 | Feifan Liu </title> <meta name="author" content="Feifan Liu"> <meta name="description" content="研究者调整神经网络，让它利用图的结构与性质。我们逐一查看搭建图神经网络所需的各个组成部分，并且说明这些设计选择背后的理由。"> <meta name="robots" content="noindex"> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+<!DOCTYPE html> <html lang="zh-cn" data-copy-code-aria="Copy code to clipboard"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> 【译文】图神经网络入门指南 | Feifan Liu </title> <meta name="author" content="Feifan Liu"> <meta name="description" content="研究者调整神经网络，让它利用图的结构与性质。我们逐一查看搭建图神经网络所需的各个组成部分，并且说明这些设计选择背后的理由。"> <script>
+  document.addEventListener('click', function (event) {
+    const link = event.target.closest('.language-switcher a[hreflang]');
+    if (link) {
+      try {
+        localStorage.setItem('preferredLanguage', link.hreflang);
+      } catch {}
+    }
+  });
+</script> <meta name="robots" content="noindex"> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
   :root {
     --max-content-width: 930px;
   }
