@@ -1,5 +1,30 @@
 <!-- Metadata, OpenGraph and Schema.org -->
 {% include metadata.liquid %}
+<script>
+  document.addEventListener('click', function (event) {
+    const link = event.target.closest('.language-switcher a[hreflang]');
+    if (link) {
+      try {
+        localStorage.setItem('preferredLanguage', link.hreflang);
+      } catch {}
+    }
+  });
+</script>
+{% assign active_lang = site.active_lang | default: site.default_lang %}
+{% if page.page_id == 'about' and active_lang == site.default_lang %}
+  <script>
+    try {
+      const preferredLanguage = localStorage.getItem('preferredLanguage');
+      const browserLanguages = navigator.languages?.length ? navigator.languages : [navigator.language];
+      const supportedLanguage = browserLanguages.find((language) => /^(zh|en)(?:-|$)/i.test(language || ''));
+      if (preferredLanguage === 'zh-cn' || (preferredLanguage !== 'en' && /^zh(?:-|$)/i.test(supportedLanguage || ''))) {
+        localStorage.setItem('languageStorageProbe', '1');
+        localStorage.removeItem('languageStorageProbe');
+        location.replace("{{ '/zh-cn/' | relative_url }}" + location.search + location.hash);
+      }
+    } catch {}
+  </script>
+{% endif %}
 {% assign site_person_name = site.first_name | append: ' ' | append: site.last_name %}
 
 {% assign hide_from_search = false %}

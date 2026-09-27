@@ -25,7 +25,7 @@ module.exports = {
     },
   },
   use: {
-    baseURL: "http://127.0.0.1:4000/al-folio",
+    baseURL: process.env.PLAYWRIGHT_BASE_URL || "http://127.0.0.1:4000/al-folio",
     screenshot: "only-on-failure",
     trace: "retain-on-failure",
   },

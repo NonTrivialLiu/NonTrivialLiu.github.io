@@ -10,6 +10,34 @@ people:
       zh-cn: 电力系统安全与稳定、电网建模仿真，以及新型电力系统规划与控制。
     website: https://zjui.intl.zju.edu.cn/node/1692
     scholar: https://scholar.google.com/citations?user=t1jaia0AAAAJ&hl=en
+  - name:
+      en: Jiang Yu
+      zh-cn: 于江
+    organization:
+      en: College of Computer Science and Technology, NUDT
+      zh-cn: 国防科技大学计算机科学与技术学院
+    description:
+      en: Research on logical reasoning in large language models and neuro-symbolic methods.
+      zh-cn: 研究大语言模型的逻辑推理与神经符号方法。
+    website: https://rozen12123.github.io/
+    website_label:
+      en: Blog
+      zh-cn: 博客
+    scholar: https://scholar.google.com/citations?user=OhbV4CEAAAAJ
+    orcid: https://orcid.org/0009-0005-2880-9009
+  - name:
+      en: Qihang Yan
+      zh-cn: 闫启航
+    organization:
+      en: Shanghai Artificial Intelligence Laboratory
+      zh-cn: 上海人工智能实验室
+    description:
+      en: Research on AI quality evaluation, LLM benchmarking, and human-computer interaction.
+      zh-cn: 研究人工智能质量评测、大模型基准评测与人机交互。
+    website: https://www.researchgate.net/profile/Qihang-Yan-2
+    website_label:
+      en: ResearchGate
+      zh-cn: ResearchGate
 
 sites:
   - name: uulin
@@ -18,12 +46,6 @@ sites:
     description:
       en: Notes on Orange Pi, Linux, and personal devices.
       zh-cn: 记录 Orange Pi、Linux 与个人设备的折腾实践。
-  - name: rozen12123
-    domain: rozen12123.github.io
-    url: https://rozen12123.github.io/
-    description:
-      en: Notes on machine learning, embedded development, and coursework.
-      zh-cn: 分享机器学习、嵌入式开发与课程学习笔记。
   - name: ssy
     domain: ssy1938010014.github.io
     url: https://ssy1938010014.github.io/

@@ -82,8 +82,10 @@ nav_order: 7
         <div class="connection-person-head">
           <div>
             <span class="connection-name">{{ person.name[page.lang] | escape }}</span>
-            <a class="connection-link" href="{{ person.website | escape }}" target="_blank" rel="noopener noreferrer">[Website ↗]</a>
+            {% assign website_label = person.website_label[page.lang] | default: 'Website' %}
+            <a class="connection-link" href="{{ person.website | escape }}" target="_blank" rel="noopener noreferrer">[{{ website_label | escape }} ↗]</a>
             {% if person.scholar %}<a class="connection-link" href="{{ person.scholar | escape }}" target="_blank" rel="noopener noreferrer">[Scholar ↗]</a>{% endif %}
+            {% if person.orcid %}<a class="connection-link" href="{{ person.orcid | escape }}" target="_blank" rel="noopener noreferrer">[ORCID ↗]</a>{% endif %}
           </div>
           <span class="connection-org">{{ person.organization[page.lang] | escape }}</span>
         </div>
