@@ -13,8 +13,10 @@
     'SUBMIT': '投稿',
     'A Gentle Introduction to Graph Neural Networks': '图神经网络入门指南',
     'AUTHORS': '作者',
+    'Authors': '作者',
     'AFFILIATIONS': '所属机构',
     'PUBLISHED': '发表时间',
+    'Published': '发表时间',
     'DOI': '数字对象标识符',
     'Sept. 2, 2021': '2021 年 9 月 2 日',
     'Google Research': '谷歌研究院',
@@ -67,6 +69,22 @@
     'Model Prediction': '模型预测',
     'Ground Truth': '真实标签',
     'Pungent': '刺鼻',
+    'pungent': '刺鼻',
+    'not pungent': '非刺鼻',
+    'unknown': '未知',
+    'Carbon': '碳',
+    'Nitrogen': '氮',
+    'Oxygen': '氧',
+    'Sulphur': '硫',
+    'Single Bond': '单键',
+    'Double Bond': '双键',
+    'Triple Bond': '三键',
+    'Aromatic Bond': '芳香键',
+    'Save as SVG': '保存为 SVG',
+    'Save as PNG': '保存为 PNG',
+    'View Source': '查看源码',
+    'View Compiled Vega': '查看编译后的 Vega',
+    'Open in Vega Editor': '在 Vega 编辑器中打开',
     'Reset': '重置',
     'Warning:': '警告：',
     'For this': '在这个',
@@ -384,7 +402,7 @@
     ['Chart of aggregation type vs model performance, and scatterplot of model performance vs number of parameters. Each point is colored by aggregation type. Hover over a point to see the GNN architecture parameters.',
       '聚合类型与模型性能的图表，以及模型性能与参数数量的散点图。每个点依据聚合类型着色。把鼠标停留在某个点上，即可查看该图神经网络的结构参数。'],
     ['Chart of message passing vs model performance, and scatterplot of model performance vs number of parameters. Each point is colored by message passing. Hover over a point to see the GNN architecture parameters',
-      '消息传递与模型性能的图表，以及模型性能与参数数量的散点图。每个点依据消息传递方式着色。把鼠标停留在某个点上，即可查看该图神经网络的结构参数'],
+      '消息传递与模型性能的图表，以及模型性能与参数数量的散点图。每个点依据消息传递方式着色。把鼠标停留在某个点上，即可查看该图神经网络的结构参数。'],
     ['Schematic of more complex graphs. On the left we have an example of a multigraph with three edge types, including a directed edge. On the right we have a three-level hierarchical graph, the intermediate level nodes are hypernodes.',
       '更复杂图的示意图。左侧是一个包含三种边类型（其中含一条有向边）的多重图示例。右侧是一个三层的层次图，中间一层的节点就是超节点。'],
     ['Four different ways of sampling the same graph. Choice of sampling strategy depends highly on context since they will generate different distributions of graph statistics (# nodes, #edges, etc.). For highly connected graphs, edges can be also subsampled.',
@@ -397,11 +415,7 @@
     // —— 页脚与复用说明 ——
     ['If you see mistakes or want to suggest changes, please ', '如果你发现错误，或者希望提出修改建议，请'],
     ['create an issue on GitHub,', '在 GitHub 上创建问题单'],
-    ['Diagrams and text are licensed under Creative Commons Attribution ', '图表与文字依据知识共享署名许可协议授权，即'],
     ['CC-BY 4.0,', 'CC-BY 4.0'],
-    ['source available on GitHub,', '源代码可在 GitHub 上获取'],
-    [', unless noted otherwise. The figures that have been reused from other sources don’t fall under this license and can be recognized by a note in their caption: “Figure from …”.',
-      '，除非另有说明。从其他来源复用的图不在此许可范围之内，可以通过图注中的说明“Figure from …”辨认出来。'],
     ['For attribution in academic contexts, please cite this work as', '在学术场合引用时，请按如下格式标注出处'],
     ['BibTeX citation', 'BibTeX 引用'],
     ['is dedicated to clear explanations of machine learning', '致力于清晰讲解机器学习'],
@@ -496,18 +510,12 @@
     // —— 在机器学习中使用图所面临的挑战 ——
     ['So, how do we go about solving these different graph tasks',
       '那么，我们要怎样用神经网络来求解这些不同的图任务呢？第一步是考虑如何表示图，才能与神经网络相兼容。'],
-    ['Machine learning models typically take rectangular',
-      '机器学习模型通常接收矩形或者网格状的数组作为输入。因此，如何把图表示成与深度学习相兼容的格式，并不是一眼就能看出来的。图最多包含四类信息，我们都可能用来做预测：节点、边、全局上下文与连接关系。前三类相对直白：举例来说，针对节点，我们可以构造一个节点特征矩阵 '],
     ['Another problem is that there are many adjacency matrices',
       '另一个问题在于，能够表达同一种连接关系的邻接矩阵有很多个，而这些不同的矩阵在深度神经网络里未必给出相同的结果（也就是说，它们不具备置换不变性）。'],
     ['The example below shows every adjacency matrix',
       '下面这个例子列出了能够描述这张四节点小图的全部邻接矩阵。这个数量已经相当可观；换成奥赛罗那样更大的例子，数量就完全无法承受了。'],
-    ['One elegant and memory-efficient way of representing sparse matrices',
-      '一种既优雅又节省内存的稀疏矩阵表示方式是邻接表。邻接表刻画边 '],
     ['To make this notion concrete, we can see how information',
       '为了让这个概念落到实处，我们来看看按照这套约定，不同图里的信息可以怎样表示：'],
-    ['It should be noted that the figure uses scalar values per node/edge/global',
-      '需要说明的是，图中每个节点、每条边、每个全局量都只取标量值，而多数实用的张量表示会为每个图属性配备向量。因此，我们面对的不再是大小为 '],
     // —— 图神经网络 ——
     ['Now that the graph’s description is in a matrix format that is permutation invariant',
       '既然图的描述已经转换为对排列保持不变的矩阵格式，接下来我们说明如何运用图神经网络（GNN）来完成图上的预测任务。 '],
@@ -527,9 +535,6 @@
       '我们以二元分类为例，这套框架也很容易推广到多分类或者回归的情形。如果任务是对节点做二元预测，而图中已经含有节点信息，做法就很直接：对每个节点嵌入施加一个线性分类器。'],
     ['However, it is not always so simple.',
       '不过，事情并不总是这么简单。举例来说，图里的信息可能存在边上，节点上却没有信息，而你依然需要预测节点。这时就需要一种办法，把边上的信息收集起来交给节点用于预测。我们可以借助 '],
-    ['We represent the', '我们把'],
-    ['operation by the letter', '操作记作字母'],
-    [', and denote that we are gathering information from edges to nodes as', '，并把从边向节点收集信息记作'],
     ['So If we only have edge-level features, and are trying to predict binary node information, we can use pooling to route (or pass) information to where it needs to go. The model looks like this.',
       '所以，如果我们手里只有边级特征，却要预测节点的二元信息，就可以借助池化把信息路由（也就是传递）到需要它的地方。模型大致是这样：'],
     ['If we only have node-level features, and are trying to predict binary edge-level information, the model looks like this.',
@@ -554,9 +559,6 @@
       '：相邻的节点或者边彼此交换信息，并相互影响各自更新后的嵌入。'],
     ['Message passing works in three steps: ',
       '消息传递分三步进行：'],
-    ['For each node in the graph, ', '对图中的每个节点，'],
-    [' all the neighboring node embeddings (or messages), which is the ', '收集全部相邻节点的嵌入（也就是消息），这正是前文所述的 '],
-    [' function described above.', ' 函数。'],
     ['Aggregate all messages via an aggregate function (like sum).',
       '用一个聚合函数（例如求和）把所有消息聚合起来。'],
     ['All pooled messages are passed through an ', '所有池化后的消息都会经过 '],
@@ -655,7 +657,7 @@
     ['The previous explorations have given mixed messages.',
       '前面的探索给出的信号并不一致：我们能找到“越复杂越好”的平均趋势，也能找到明确的反例，即参数更少、层数更少或者维度更低的模型反而表现更好。有一条趋势要清晰得多，就是有多少种属性在彼此传递信息。'],
     ['Here we break down performance based on the style of message passing.',
-      '这里我们按消息传递的形式拆解性能。两个极端分别是：图实体之间完全不通信（“none”），以及节点、边与全局量之间都传递消息。'],
+      '这里我们按消息传递的形式拆解性能。两个极端分别是：图实体之间完全不通信（“无”），以及节点、边与全局量之间都传递消息。'],
     ['Overall we see that the more graph attributes are communicating,',
       '总体来看，参与通信的图属性越多，模型的平均性能越好。我们的任务围绕全局表示展开，因此显式学习这一属性往往也能提升性能。节点表示似乎也比边表示更有用，这很合理，因为节点上装载的信息更多。'],
     ['There are many directions you could go from here to get better performance.',
@@ -730,7 +732,7 @@
 
     // —— 深入细节：边与图的对偶 ——
     ['One thing to note is that edge predictions and node predictions',
-      '有一点值得留意：边预测与节点预测看似彼此不同，却常常归结为同一个问题：图上的一项边预测任务 $G$，可以改写为在其对偶图上的一项节点级预测。'],
+      '值得注意的是，边预测与节点预测看似大相径庭，实则常可归结为同一问题：图 $G$ 上的边预测任务，均可转化为 $G$ 的对偶图上的节点级预测。'],
     ['To obtain $G$’s dual, we can convert nodes to edges',
       '要得到 $G$ 的对偶图，我们可以把节点转换为边（把边转换为节点）。一张图与它的对偶图承载着同样的信息，只是表达方式不同。这种性质有时会让问题在一种表示下比在另一种表示下更容易求解，就像傅里叶空间里的频率一样。简而言之，要解决 $G$ 上的边分类任务，我们可以考虑在 $G$ 的对偶图上做图卷积（这等价于在 $G$ 上学习边的表示），这一思路由对偶-原图卷积网络（Dual-Primal Graph Convolutional Networks）提出。 '],
 
@@ -738,11 +740,11 @@
     ['We’ve talked a lot about graph convolutions and message passing',
       '关于图卷积与消息传递，我们已经谈了不少，这自然带来一个问题：在实践中要怎样实现这些运算？本节我们考察矩阵乘法与消息传递的一些性质，以及它与图上遍历之间的联系。'],
     ['The first point we want to illustrate is that the matrix multiplication',
-      '我们首先要说明的一点是：把邻接矩阵 $A$（大小为 $n_{nodes} \\times n_{nodes}$）与节点特征矩阵 $X$（大小为 $n_{nodes} \\times node_{dim}$）相乘，实现的是一种以求和为聚合方式的最简消息传递。设所得矩阵为 $B=AX$，可以观察到其中任意一项 $B_{ij}$ 都能写作 $<A_{row_i} \\dot X_{column_j}>= A_{i,1}X_{1,j}+A_{i,2}X_{2, j}+…+A_{i,n}X_{n, j}=\\sum_{A_{i,k}>0} X_{k,j}$。由于只有在一对节点之间存在边时，$A_{i,k}$ 才取二值项，这个内积实际上是在“收集”所有与 $node_i$ 共享一条边、并且维度为 $j$ 的节点特征取值。需要说明的是，这种消息传递并没有更新节点特征本身的表示，只是把相邻节点的特征池化起来。不过改造起来很容易：只要在矩阵乘法之前或者之后，把 $X$ 送入你惯用的可微变换（例如 MLP）即可。'],
+      '我们首先要说明的一点是：把邻接矩阵 $A$（大小为 $n_{nodes} \\times n_{nodes}$）与节点特征矩阵 $X$（大小为 $n_{nodes} \\times node_{dim}$）相乘，实现的是一种以求和为聚合方式的最简消息传递。设所得矩阵为 $B=AX$，可以观察到其中任意一项 $B_{ij}$ 都能写作 $\\langle A_{row_i}, X_{column_j} \\rangle = A_{i,1}X_{1,j}+A_{i,2}X_{2,j}+…+A_{i,n}X_{n,j}=\\sum_{A_{i,k}>0} X_{k,j}$。仅当 $node_i$ 与 $node_k$ 之间存在连边时，$A_{i,k}$ 才取非零的二值。因此，这一内积本质上是在“汇聚”特征：它将所有与 $node_i$ 共享连边的节点在第 $j$ 维上的特征值全部收集到一起。需要说明的是，这种消息传递并没有更新节点特征本身的表示，只是把相邻节点的特征池化起来。不过改造起来很容易：只要在矩阵乘法之前或者之后，把 $X$ 送入你惯用的可微变换（例如 MLP）即可。'],
     ['From this view, we can appreciate the benefit of using adjacency lists.',
       '从这个角度看，就能体会到使用邻接表的好处。由于 $A$ 通常是稀疏的，我们不必对 $A_{i,j}$ 为零的所有取值求和。只要有一个按索引收集取值的运算，我们就应当能够只取出非零项。此外，这种不依赖矩阵乘法的做法，也让我们不再被迫把求和当作唯一的聚合运算。'],
     ['We can imagine that applying this operation multiple times',
-      '可以设想，反复施加这一运算就能把信息传播到更远的地方。从这个意义上说，矩阵乘法是一种图上遍历。当我们观察邻接矩阵的幂 $A^K$ 时，这种联系同样显而易见。考虑矩阵 $A^2$，其中项 $A^2_{ij}$ 统计的是从 $node_{i}$ 到 $node_{j}$ 所有长度为 2 的游走，可以写作内积 $<A_{row_i}, A_{column_j}> = A_{i,1}A_{1, j}+A_{i,2}A_{2, j}+…+A_{i,n}A{n,j}$。直觉是这样的：第一项 $a_{i,1}a_{1, j}$ 只在两种条件同时成立时才为正——存在一条连接 $node_i$ 与 $node_1$ 的边，以及另一条连接 $node_{1}$ 与 $node_{j}$ 的边。换句话说，这两条边构成了一条从 $node_i$ 出发、途经 $node_1$ 到达 $node_j$ 的长度为 2 的路径。由于求和的存在，我们对所有可能的中间节点都做了计数。当我们考虑 $A^3=A \\matrix A^2$……并依此类推到 $A^k$ 时，这一直觉依然成立。'],
+      '可以设想，反复施加这一运算就能把信息传播到更远的地方。从这个意义上说，矩阵乘法是一种图上遍历。当我们观察邻接矩阵的幂 $A^K$ 时，这种联系同样显而易见。考虑矩阵 $A^2$，其中项 $A^2_{ij}$ 统计的是从 $node_{i}$ 到 $node_{j}$ 所有长度为 2 的游走，可以写作内积 $\\langle A_{row_i}, A_{column_j} \\rangle = A_{i,1}A_{1, j}+A_{i,2}A_{2, j}+…+A_{i,n}A_{n,j}$。直觉是这样的：第一项 $a_{i,1}a_{1, j}$ 只在两种条件同时成立时才为正——存在一条连接 $node_i$ 与 $node_1$ 的边，以及另一条连接 $node_{1}$ 与 $node_{j}$ 的边。换句话说，这两条边构成了一条从 $node_i$ 出发、途经 $node_1$ 到达 $node_j$ 的长度为 2 的路径。由于求和的存在，我们对所有可能的中间节点都做了计数。当我们考虑 $A^3 = A A^2$……并依此类推到 $A^k$ 时，这一直觉依然成立。'],
     ['There are deeper connections on how we can view matrices as graphs',
       '关于怎样把矩阵看作图，还有更深的联系值得探索 '],
 
@@ -796,7 +798,6 @@
     ['Review #2 - Patricia Robinson', '评审 #2 · Patricia Robinson'],
     ['Review #3 - Humza Iqbal', '评审 #3 · Humza Iqbal'],
     ['create an issue on GitHub', '在 GitHub 上创建问题单'],
-    ['source available on GitHub', '源代码可在 GitHub 上获取'],
     // —— 演练场的告警提示：两条分支各自成句，只能分别对齐 ——
     ['Model predictions for edited molecules are only available for the fully trained model. Displaying predictions from the last epoch.',
       '编辑过的分子只有完整训练好的模型才能给出预测结果。下面展示的是最后一个迭代轮次的预测结果。'],
@@ -808,24 +809,6 @@
   // 段落作用域片段：公式会把句子切成极短的连接片段（例如 " in "），
   // 这类片段全局匹配太危险，因此限定只在以指定句首开头的段落内生效。
   const SCOPED = {
-    'Machine learning models typically take rectangular': [
-      [' by assigning each node an index ', '：我们给每个节点分配编号 '],
-      [' and storing the feature for ', '，再把 '],
-      [' in ', ' 的特征存入 '],
-      ['. While these matrices have a variable number of examples, they can be processed without any special techniques.',
-        '。这些矩阵的样本数量会变化，处理它们并不需要什么特别技巧。'],
-    ],
-    'One elegant and memory-efficient way of representing sparse matrices': [
-      [' between nodes ', ' 在节点 '],
-      [' as a tuple (i,j) in the k-th entry of an adjacency list. Since we expect the number of edges to be much lower than the number of entries for an adjacency matrix (',
-        ' 之间的连接关系，用邻接表第 k 项里的元组 (i,j) 表示。由于边的数量通常远少于邻接矩阵的条目数（'],
-      ['), we avoid computation and storage on the disconnected parts of the graph.',
-        '），我们就不必在图里那些互不相连的部分上做计算与存储。'],
-    ],
-    'It should be noted that the figure uses scalar values per node/edge/global': [
-      [' we will be dealing with node tensors of size ', ' 的节点张量，而是大小为 '],
-      ['. Same for the other graph attributes.', ' 的节点张量。其他图属性同理。'],
-    ],
     'How to train and design GNNs': [
       [', ', '，'],
       ['.', '。'],
@@ -865,6 +848,16 @@
     while (sibling) {
       const value = sibling.nodeType === Node.TEXT_NODE ? sibling.nodeValue : sibling.textContent;
       if (value && value.trim()) return CJK.test(value.trim().slice(-1));
+      sibling = sibling.previousSibling;
+    }
+    return false;
+  }
+
+  function previousIsCitation(node) {
+    let sibling = node.previousSibling;
+    while (sibling) {
+      if (sibling.nodeType === Node.ELEMENT_NODE) return sibling.tagName === 'D-CITE';
+      if (sibling.nodeValue && sibling.nodeValue.trim()) return false;
       sibling = sibling.previousSibling;
     }
     return false;
@@ -914,6 +907,7 @@
       const start = text.indexOf(trimmed);
       return text.slice(0, start) + EXACT.get(trimmed) + text.slice(start + trimmed.length);
     }
+    if (/^\d+(?:\.\d+)?% pungent$/.test(trimmed)) return text.replace('pungent', '刺鼻');
     let out = text;
     for (const [start, zh] of PARAGRAPHS) {
       // 前缀锚定同样对空白宽容：原文可能夹着双空格或窄空格。
@@ -951,7 +945,7 @@
       const raw = node.nodeValue;
       const trimmed = raw.trim();
       let next;
-      if (TRAILING_PUNCT.has(trimmed) && previousEndsWithCJK(node)) {
+      if (TRAILING_PUNCT.has(trimmed) && (previousEndsWithCJK(node) || previousIsCitation(node))) {
         const start = raw.indexOf(trimmed);
         next = raw.slice(0, start) + TRAILING_PUNCT.get(trimmed) + raw.slice(start + trimmed.length);
       } else {
@@ -995,7 +989,8 @@
   // 交互图由 d3/vega 动态生成，需要持续跟进。
   new MutationObserver((records) => {
     for (const record of records) {
+      if (record.type === 'characterData') walk(record.target);
       for (const added of record.addedNodes) walk(added);
     }
-  }).observe(document.documentElement, { childList: true, subtree: true });
+  }).observe(document.documentElement, { childList: true, characterData: true, subtree: true });
 })();
