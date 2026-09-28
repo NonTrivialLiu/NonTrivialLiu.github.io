@@ -1295,7 +1295,7 @@ On the left we have an initial graph built from the previous visual scene. On th
 
 <h2 id="the-challenges-of-using-graphs-in-machine-learning">The challenges of using graphs in machine learning</h2>
 <p>So, how do we go about solving these different graph tasks with neural networks? The first step is to think about how we will represent graphs to be compatible with neural networks.</p>
-<p>Machine learning models typically take rectangular or grid-like arrays as input. So, it’s not immediately intuitive how to represent them in a format that is compatible with deep learning. Graphs have up to four types of information that we will potentially want to use to make predictions: nodes, edges,  global-context and connectivity. The first three are relatively straightforward: for example, with nodes we can form a node feature matrix $N$ by assigning each node an index $i$ and storing the feature for $node_i$ in $N$. While these matrices have a variable number of examples, they can be processed without any special techniques.</p>
+<p>机器学习模型通常以矩形或网格状数组作为输入。因此，如何将图结构转化为与深度学习相兼容的表示形式，并非一目了然。图最多包含四类我们可能希望用于预测任务的信息：节点、边、全局上下文以及拓扑连接关系。前三类相对直观：例如，针对节点，我们可以为每个节点分配一个索引 $i$，并将 $node_i$ 的特征存入矩阵 $N$ 中，以此构建节点特征矩阵 $N$。尽管由于节点数量不同导致这些矩阵的样本行数并不固定，但利用常规深度学习技术便能对其进行直接处理。</p>
 <p>However, representing a graph’s connectivity is more complicated. Perhaps the most obvious choice would be to use an adjacency matrix, since this is easily tensorisable. However, this representation has a few drawbacks. From the <a href="#table">example dataset table</a>, we see the number of nodes in a graph can be on the order of millions, and the number of edges per node can be highly variable. Often, this leads to very sparse adjacency matrices, which are space-inefficient.</p>
 <p>Another problem is that there are many adjacency matrices that can encode the same connectivity, and there is no guarantee that these different matrices would produce the same result in a deep neural network (that is to say, they are not permutation invariant).</p>
 <aside markdown="1">
@@ -1320,7 +1320,7 @@ All of these adjacency matrices represent the same graph. Click on an edge to re
 </figcaption>
 </figure>
 
-<p>One elegant and memory-efficient way of representing sparse matrices is as adjacency lists. These describe the connectivity of edge $e_k$ between nodes $n_i$ and $n_j$ as a tuple (i,j) in the k-th entry of an adjacency list. Since we expect the number of edges to be much lower than the number of entries for an adjacency matrix ($n_{nodes}^2$), we avoid computation and storage on the disconnected parts of the graph. </p>
+<p>一种优雅且节省显存的稀疏矩阵表示方法是使用邻接表。此类结构将连接节点 $n_i$ 与 $n_j$ 的边 $e_k$，表述为邻接表第 $k$ 项中的一个二元组 $(i, j)$。鉴于边的数量通常远少于邻接矩阵所包含的项数（$n_{nodes}^2$），我们便得以避免在图中未相连的部分上耗费计算与存储资源。</p>
 <aside>
 Another way of stating this is with Big-O notation, it is preferable to have $O(n_{edges})$, rather than $O(n_{nodes}^2)$.
 </aside>
@@ -1332,7 +1332,7 @@ Another way of stating this is with Big-O notation, it is preferable to have $O(
 Hover and click on the edges, nodes, and global graph marker to view and change attribute representations. On one side we have a small graph and on the other the information of the graph in a tensor representation.
 </figcaption></figure>
 
-<p>It should be noted that the figure uses scalar values per node/edge/global, but most practical tensor representations have vectors per graph attribute. Instead of a node tensor of size $[n_{nodes}]$ we will be dealing with node tensors of size $[n_{nodes}, node_{dim}]$. Same for the other graph attributes.</p>
+<p>需要指出的是，前文示意图中每个节点、每条边及全局上下文均采用标量表示，但在实际的工程张量表征中，各个图属性通常都采用特征向量。我们所处理的将是尺寸为 $[n_{nodes}, node_{dim}]$ 的节点张量，而不再是大小仅为 $[n_{nodes}]$ 的标量张量。对于其余的图属性而言亦是如此。</p>
 <h2 id="graph-neural-networks">Graph Neural Networks</h2>
 <p>Now that the  graph’s description is in a matrix format that is permutation invariant, we will describe using graph neural networks (GNNs) to solve graph prediction tasks. <strong>A GNN is an optimizable transformation on all attributes of the graph (nodes, edges, global-context) that preserves graph symmetries (permutation invariances).</strong> We’re going to build GNNs using the “message passing neural network” framework proposed by Gilmer et al.<d-cite key="Gilmer2017-no"></d-cite> using the Graph Nets architecture schematics introduced by Battaglia et al.<d-cite key="Battaglia2018-pi"></d-cite>  GNNs adopt a “graph-in, graph-out” architecture meaning that these model types accept a graph as input, with information loaded into its nodes, edges and global-context, and progressively transform these embeddings, without changing the connectivity of the input graph. </p>
 <h3 id="the-simplest-gnn">The simplest GNN</h3>
@@ -1374,7 +1374,7 @@ We could imagine a social network, where we wish to anonymize user data (nodes) 
 For a more in-depth discussion on aggregation operations go to the <a href="#comparing-aggregation-operations"> Comparing aggregation operations </a> section.
 </aside>
 
-<p>We represent the <em>pooling</em> operation by the letter $\rho$, and denote that we are gathering information from edges to nodes as $p_{E_n \to V_{n}}$. </p>
+<p>我们用字母 $\rho$ 表示<em>池化操作</em>，并将从边汇聚信息至节点的过程记作 $\rho_{E_n \to V_n}$（原文亦写作 $p_{E_n \to V_n}$）。</p>
 <figure><div id="node-step-small"></div>
 <figcaption>
 Hover over a node (black node) to visualize which edges are gathered and aggregated to produce an embedding for that target node.</figcaption>
@@ -1414,7 +1414,7 @@ An end-to-end prediction task with a GNN model.
 <p>We could make more sophisticated predictions by using pooling within the GNN layer, in order to make our learned embeddings aware of graph connectivity. We can do this using <em>message passing</em><d-cite key="Gilmer2017-no"></d-cite>, where neighboring nodes or edges exchange information and influence each other’s updated embeddings.</p>
 <p>Message passing works in three steps: </p>
 <ol>
-<li><p>For each node in the graph, <em>gather</em> all the neighboring node embeddings (or messages), which is the $g$ function described above.</p>
+<li><p>对于图中的每个节点，<em>收集</em>其所有相邻节点的嵌入（或消息），这正是前文所述的 $g$ 函数。</p>
 </li>
 <li><p>Aggregate all messages via an aggregate function (like sum).</p>
 </li>
@@ -1501,11 +1501,10 @@ A perfect model would visibility separate labeled data, but since we are reducin
 <p>When exploring the architecture choices above, you might have found some models have better performance than others. Are there some clear GNN design choices that will give us better performance? For example, do deeper GNN models perform better than shallower ones? or is there a clear choice between aggregation functions? The answers are going to depend on the data, <d-cite key="Dwivedi2020-xm"></d-cite> <d-cite key="You2020-vk"></d-cite>, and even different ways of featurizing and constructing graphs can give different answers.</p>
 <p>With the following interactive figure, we explore the space of GNN architectures and the performance of this task across a few major design choices:  Style of message passing, the dimensionality of embeddings, number of layers, and aggregation operation type.</p>
 <p>Each point in the scatter plot represents a model: the x axis is the number of trainable variables, and the y axis is the performance. Hover over a point to see the GNN architecture parameters.</p>
+<script src="vega-zh.js"></script>
 <figure>
 <div id="BasicArchitectures"></div>
-<script>var spec = "BasicArchitectures.json";
-vegaEmbed('#BasicArchitectures', spec).then(function (result) {// Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-}).catch(console.error);</script>
+<script>renderGnnChart('#BasicArchitectures', 'BasicArchitectures.json');</script>
 <figcaption>Scatterplot of each model’s performance vs its number of trainable variables. Hover over a point to see the GNN architecture parameters.</figcaption>
 </figure>
 
@@ -1513,9 +1512,7 @@ vegaEmbed('#BasicArchitectures', spec).then(function (result) {// Access the Veg
 <p>Next, we can look at the distributions of performance aggregated based on the dimensionality of the learned representations for different graph attributes.</p>
 <figure>
 <div id="ArchitectureNDim"></div>
-<script>var spec = "ArchitectureNDim.json";
-vegaEmbed('#ArchitectureNDim', spec).then(function (result) {// Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-}).catch(console.error);</script>
+<script>renderGnnChart('#ArchitectureNDim', 'ArchitectureNDim.json');</script>
 <figcaption>Aggregate performance of models across varying node, edge, and global dimensions.</figcaption>
 </figure>
 
@@ -1523,9 +1520,7 @@ vegaEmbed('#ArchitectureNDim', spec).then(function (result) {// Access the Vega 
 <p>Next we can see the breakdown of performance based on the number of GNN layers.</p>
 <figure>
 <div id="ArchitectureNLayers"></div>
-<script>var spec = "ArchitectureNLayers.json";
-vegaEmbed('#ArchitectureNLayers', spec).then(function (result) {// Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-}).catch(console.error);</script>
+<script>renderGnnChart('#ArchitectureNLayers', 'ArchitectureNLayers.json');</script>
 <figcaption> Chart of number of layers vs model performance, and scatterplot of model performance vs number of parameters. Each point is colored by the number of layers. Hover over a point to see the GNN architecture parameters.</figcaption>
 </figure>
 
@@ -1534,9 +1529,7 @@ vegaEmbed('#ArchitectureNLayers', spec).then(function (result) {// Access the Ve
 <p>Does our dataset have a preferred aggregation operation? Our following figure breaks down performance in terms of aggregation type.</p>
 <figure>
 <div id="ArchitectureAggregation"></div>
-<script>var spec = "ArchitectureAggregation.json";
-vegaEmbed('#ArchitectureAggregation', spec).then(function (result) {// Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-}).catch(console.error);</script>
+<script>renderGnnChart('#ArchitectureAggregation', 'ArchitectureAggregation.json');</script>
 <figcaption>Chart of aggregation type vs model performance, and scatterplot of model performance vs number of parameters. Each point is colored by aggregation type. Hover over a point to see the GNN architecture parameters.</figcaption>
 </figure>
 
@@ -1545,9 +1538,7 @@ vegaEmbed('#ArchitectureAggregation', spec).then(function (result) {// Access th
 <p>Here we break down performance based on the style of message passing. On both extremes, we consider models that do not communicate between graph entities (“none”) and models that have messaging passed between nodes, edges, and globals.</p>
 <figure>
 <div id="ArchitectureMessagePassing"></div>
-<script>var spec = "ArchitectureMessagePassing.json";
-vegaEmbed('#ArchitectureMessagePassing', spec).then(function (result) {// Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-}).catch(console.error);</script>
+<script>renderGnnChart('#ArchitectureMessagePassing', 'ArchitectureMessagePassing.json');</script>
 <figcaption>Chart of message passing vs model performance, and scatterplot of model performance vs number of parameters. Each point is colored by message passing. Hover over a point to see the GNN architecture parameters</figcaption>
 </figure>
 
@@ -1611,9 +1602,9 @@ No pooling type can always distinguish between graph pairs such as max pooling o
 <h3 id="graph-convolutions-as-matrix-multiplications-and-matrix-multiplications-as-walks-on-a-graph">Graph convolutions as matrix multiplications, and matrix multiplications as walks on a graph</h3>
 <p>We’ve talked a lot about graph convolutions and message passing, and of course, this raises the question of how do we implement these operations in practice? For this section, we explore some of the properties of matrix multiplication, message passing, and its connection to traversing a graph. </p>
 <p>The first point we want to illustrate is that the matrix multiplication of an adjacent matrix $A$  $n_{nodes} \times n_{nodes}$ with a node feature matrix $X$ of size $n_{nodes} \times node_{dim}$ implements an simple message passing with a summation aggregation.
-Let the matrix be $B=AX$, we can observe that any entry $B_{ij}$ can be expressed as $&lt;A_{row_i} \dot X_{column_j}&gt;= A_{i,1}X_{1,j}+A_{i,2}X_{2, j}+…+A_{i,n}X_{n, j}=\sum_{A_{i,k}&gt;0} X_{k,j}$. Because $A_{i,k}$ are binary entries only when a edge exists between $node_i$ and $node_k$, the inner product is essentially “gathering” all node features values of dimension $j$” that share an edge with $node_i$. It should be noted that this message passing is not updating the representation of the node features, just pooling neighboring node features. But this can be easily adapted by passing $X$ through your favorite differentiable transformation (e.g. MLP) before or after the matrix multiply.</p>
+Let the matrix be $B=AX$, we can observe that any entry $B_{ij}$ can be expressed as $\langle A_{row_i}, X_{column_j} \rangle= A_{i,1}X_{1,j}+A_{i,2}X_{2, j}+…+A_{i,n}X_{n, j}=\sum_{A_{i,k}&gt;0} X_{k,j}$. Because $A_{i,k}$ are binary entries only when a edge exists between $node_i$ and $node_k$, the inner product is essentially “gathering” all node features values of dimension $j$” that share an edge with $node_i$. It should be noted that this message passing is not updating the representation of the node features, just pooling neighboring node features. But this can be easily adapted by passing $X$ through your favorite differentiable transformation (e.g. MLP) before or after the matrix multiply.</p>
 <p>From this view, we can appreciate the benefit of using adjacency lists. Due to the expected sparsity of $A$ we don’t have to sum all values where $A_{i,j}$ is zero. As long as we have an operation to gather values based on an index, we should be able to just retrieve positive entries. Additionally, this matrix multiply-free approach frees us from using summation as an aggregation operation. </p>
-<p>We can imagine that applying this operation multiple times allows us to propagate information at greater distances. In this sense, matrix multiplication is a form of traversing over a graph. This relationship is also apparent when we look at powers $A^K$ of the adjacency matrix.  If we consider the matrix $A^2$, the term $A^2_{ij}$ counts all walks of length 2 from $node_{i}$ to $node_{j}$ and can be expressed as the inner product $&lt;A_{row_i}, A_{column_j}&gt; = A_{i,1}A_{1, j}+A_{i,2}A_{2, j}+…+A_{i,n}A{n,j}$. The intuition is that the first term $a_{i,1}a_{1, j}$ is only positive under two conditions, there is edge that connects $node_i$ to $node_1$ and another edge that connects $node_{1}$ to $node_{j}$. In other words, both edges form a path of length 2 that goes from $node_i$ to $node_j$ passing by $node_1$. Due to the summation, we are counting over all possible intermediate nodes. This intuition carries over when we consider $A^3=A \matrix A^2$.. and so on to $A^k$. </p>
+<p>We can imagine that applying this operation multiple times allows us to propagate information at greater distances. In this sense, matrix multiplication is a form of traversing over a graph. This relationship is also apparent when we look at powers $A^K$ of the adjacency matrix.  If we consider the matrix $A^2$, the term $A^2_{ij}$ counts all walks of length 2 from $node_{i}$ to $node_{j}$ and can be expressed as the inner product $\langle A_{row_i}, A_{column_j} \rangle = A_{i,1}A_{1, j}+A_{i,2}A_{2, j}+…+A_{i,n}A_{n,j}$. The intuition is that the first term $a_{i,1}a_{1, j}$ is only positive under two conditions, there is edge that connects $node_i$ to $node_1$ and another edge that connects $node_{1}$ to $node_{j}$. In other words, both edges form a path of length 2 that goes from $node_i$ to $node_j$ passing by $node_1$. Due to the summation, we are counting over all possible intermediate nodes. This intuition carries over when we consider $A^3 = A A^2$.. and so on to $A^k$. </p>
 <p>There are deeper connections on how we can view matrices as graphs to explore <d-cite key="noauthor_undated-qq"></d-cite><d-cite key="Bapat2014-fk"></d-cite><d-cite key="Bollobas2013-uk"></d-cite>.</p>
 <h3 id="graph-attention-networks">Graph Attention Networks</h3>
 <p>Another way of communicating information between graph attributes is via attention.<d-cite key="Vaswani2017-as"></d-cite> For example, when we consider the sum-aggregation of a node and its 1-degree neighboring nodes we could also consider using a weighted sum.The challenge then is to associate weights in a permutation invariant fashion. One approach is to consider a scalar scoring function that assigns weights based on pairs of nodes ( $f(node_i, node_j)$). In this case, the scoring function can be interpreted as a function that measures how relevant a neighboring node is in relation to the center node. Weights can be normalized, for example with a softmax function to focus most of the weight on a neighbor most relevant for a node in relation to a task. This concept is the basis of Graph Attention Networks (GAT) <d-cite key="Velickovic2017-hf"></d-cite> and Set Transformers<d-cite key="Lee2018-ti"></d-cite>. Permutation invariance is preserved, because scoring works on pairs of nodes. A common scoring function is the inner product and nodes are often transformed before scoring into query and key vectors via a linear map to increase the expressivity of the scoring mechanism. Additionally for interpretability, the scoring weights can be used as a measure of the importance of an edge in relation to a task. </p>
@@ -1698,7 +1689,7 @@ d-citation-list .references .title {
     If you see mistakes or want to suggest changes, please <a href="https://github.com/distillpub/post--gnn-intro/issues/new">create an issue on GitHub</a>. </p>
     
     <h3 id="reuse">Reuse</h3>
-    <p>Diagrams and text are licensed under Creative Commons Attribution <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> with the <a class="github" href="https://github.com/distillpub/post--gnn-intro">source available on GitHub</a>, unless noted otherwise. The figures that have been reused from other sources don’t fall under this license and can be recognized by a note in their caption: “Figure from …”.</p>
+    <p>除非另有说明，本文的图表与文本均遵循知识共享署名许可 <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 授权，其源代码可在 <a class="github" href="https://github.com/distillpub/post--gnn-intro">GitHub</a> 上公开获取。从其他来源复用的图表不属于本许可的适用范畴，读者可通过其图注中的特别标注（“Figure from …”）加以辨别。</p>
     
     <h3 id="citation">Citation</h3>
     <p>For attribution in academic contexts, please cite this work as</p>
